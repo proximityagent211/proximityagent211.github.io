@@ -228,21 +228,21 @@ go(0);
 
 /* ---------- calculator ---------- */
 const P = {
-  bot:  { base: 1500, name: 'Telegram-бот', cx: 'Сложность сценария', days: [1, 2, 3, 4, 6] },
-  land: { base: 2000, name: 'Лендинг', cx: 'Количество блоков', days: [1, 2, 3, 4, 5] },
-  pars: { base: 800,  name: 'Парсер', cx: 'Сложность сайта', days: [1, 1, 2, 3, 4] },
-  auto: { base: 800,  name: 'Автоматизация', cx: 'Объём задачи', days: [1, 1, 2, 3, 4] },
+  bot:  { base: 500,  name: 'Telegram-бот', cx: 'Сложность сценария', days: [1, 2, 3, 4, 6] },
+  land: { base: 1000, name: 'Лендинг', cx: 'Количество блоков', days: [1, 2, 3, 4, 5] },
+  pars: { base: 300,  name: 'Парсер', cx: 'Сложность сайта', days: [1, 1, 2, 3, 4] },
+  auto: { base: 300,  name: 'Автоматизация', cx: 'Объём задачи', days: [1, 1, 2, 3, 4] },
 };
 const CX = ['Минимальная', 'Простая', 'Средняя', 'Выше средней', 'Сложная'];
 const SP = ['Не горит', 'Стандартный', 'Срочно'];
-const OPT = [['o1', 'Запуск на сервере', 400], ['o2', 'Google Таблицы', 500], ['o3', 'Поддержка 30 дней', 700]];
+const OPT = [['o1', 'Запуск на сервере', 200], ['o2', 'Google Таблицы', 300], ['o3', 'Поддержка 30 дней', 400]];
 let type = 'bot', shown = 0;
 const fmt = n => Math.round(n).toLocaleString('ru');
 const dayWord = n => n % 10 === 1 && n % 100 !== 11 ? 'день' : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? 'дня' : 'дней';
 function paint(r) { r.style.setProperty('--p', (r.value - r.min) / (r.max - r.min) * 100 + '%'); }
 function calc() {
   const p = P[type], cx = +$('#cx').value, sp = +$('#sp').value;
-  const work = Math.round(p.base * (1 + .45 * (cx - 1)) / 100) * 100;
+  const work = Math.round(p.base * (1 + .25 * (cx - 1)) / 100) * 100;
   const k = [.9, 1, 1.3][sp - 1];
   let total = Math.round(work * k / 100) * 100;
   const rows = [[p.name + ' · ' + CX[cx - 1].toLowerCase(), work]];
