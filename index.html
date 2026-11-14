@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProximityAgent — Telegram-боты, сайты и автоматизация</title>
+<meta name="description" content="Telegram-боты, лендинги, парсеры и автоматизация под ключ. Быстрые сроки, исходный код и поддержка после сдачи.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="ProximityAgent — боты, сайты, автоматизация">
+<meta property="og:description" content="Разработка Telegram-ботов, лендингов и парсеров под ключ.">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/planet.webp" type="image/webp">
+<link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+<div id="loader"><div class="ld"><i></i><i></i><b></b></div></div>
+<div class="cur"></div><div class="cur-dot"></div>
+<canvas id="stars"></canvas>
+
+<!-- icon sprite (all icons drawn by hand) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-r" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-ne" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21 4L3 11l6 2 2 6 3-4 5 4 2-15z"/><path d="M9 13l9-6-7 8"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 00-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+    <symbol id="i-k" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M9 7v10M15 7l-6 5 6 5"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="4" fill="#000" stroke="#000"/><circle cx="9.5" cy="13.5" r="1.3" fill="#fff"/><circle cx="14.5" cy="13.5" r="1.3" fill="#fff"/><path d="M12 8V5" stroke="#000" stroke-width="1.6"/><circle cx="12" cy="4" r="1.4" fill="#000"/></symbol>
+  </defs>
+</svg>
+
+<header id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="ProximityAgent">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="8" fill="#000" stroke="#fff" stroke-width="1.2"/><g class="lo-ring"><ellipse cx="20" cy="20" rx="17" ry="6.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1" transform="rotate(-18 20 20)"/><circle cx="36" cy="14.6" r="2" fill="#fff"/></g></svg>
+      PROXIMITY<span style="opacity:.45">AGENT</span>
+    </a>
+    <nav id="nav">
+      <a href="#services">Услуги</a>
+      <a href="#works">Работы</a>
+      <a href="#calc">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contact" class="btn sm">Обсудить проект</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="tag"><i></i>Принимаю заказы</span>
+      <h1>
+        <span class="line"><span>Боты, сайты и</span></span>
+        <span class="line"><span>автоматизация</span></span>
+        <span class="line"><span class="o">на орбите</span> <span>бизнеса</span></span>
+      </h1>
+      <p class="lead">Разрабатываю Telegram-ботов, лендинги и парсеры под ключ. Быстро, по фиксированной цене, с исходным кодом и поддержкой после сдачи.</p>
+      <div class="acts">
+        <a href="#contact" class="btn">Обсудить задачу <svg><use href="#i-arrow"/></svg></a>
+        <a href="#works" class="btn ghost">Смотреть работы</a>
+      </div>
+      <div class="stats">
+        <div><b data-count="3">0</b><span>дня — средний срок</span></div>
+        <div><b data-count="14">0</b><span>дней поддержки</span></div>
+        <div><b>24/7</b><span>на связи</span></div>
+      </div>
+    </div>
+    <div class="orbit-wrap" id="orbitWrap">
+      <picture>
+        <source srcset="assets/planet.webp" type="image/webp">
+        <img class="planet" src="assets/planet.jpg" alt="" width="1100" height="1100">
+      </picture>
+      <canvas id="orbit"></canvas>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="mq">
+    <span>Telegram Bot API</span><span>Python</span><span>aiogram</span><span>JavaScript</span><span>HTML / CSS</span><span>Google Sheets API</span><span>Парсинг</span><span>SQLite</span><span>Wildberries</span><span>Ozon</span><span>REST API</span><span>Excel</span>
+  </div></div>
+
+  <!-- SERVICES -->
+  <section id="services"><div class="wrap">
+    <div class="sh rv">
+      <div><span class="num">01 / УСЛУГИ</span><h2>Что я делаю</h2></div>
+      <p>Каждая услуга — с фиксированной ценой, понятным сроком и исходниками на руках.</p>
+    </div>
+    <div class="svc">
+      <a href="#contact" class="s-card rv" data-svc="bot">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="8" y="12" width="38" height="28" rx="9"/><path d="M17 40l-5 7 11-7"/><circle cx="20" cy="26" r="2.5"/><circle cx="34" cy="26" r="2.5"/><path d="M27 12V5"/><circle cx="27" cy="4" r="1.6"/><circle class="an" cx="27" cy="26" r="24"/></svg></div>
+        <h3>Telegram-боты</h3>
+        <p>Запись клиентов, приём заявок, каталог с оплатой, рассылки, уведомления администратору и выгрузка в таблицы.</p>
+        <div class="s-foot"><b>от 1 500 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d1">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="5" y="9" width="44" height="34" rx="5"/><path d="M5 17h44"/><circle cx="10" cy="13" r=".8"/><circle cx="14" cy="13" r=".8"/><path d="M12 25h18M12 31h12"/><rect x="34" y="23" width="9" height="12" rx="2"/><path class="an" d="M14 49h26"/></svg></div>
+        <h3>Лендинги и сайты</h3>
+        <p>Адаптивные одностраничники с формой заявки в Telegram или на почту. Помогу с хостингом и доменом.</p>
+        <div class="s-foot"><b>от 2 000 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d2">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="20" cy="20" r="13"/><path d="M30 30l14 14"/><path d="M13 22l4-5 4 4 5-7"/><path class="an" d="M38 8h10v10M48 8L36 20"/></svg></div>
+        <h3>Парсинг данных</h3>
+        <p>Сбор цен, товаров и контактов с сайтов и маркетплейсов в Excel или Google Таблицы, в том числе по расписанию.</p>
+        <div class="s-foot"><b>от 800 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="7"/><path d="M27 8v6M27 40v6M8 27h6M40 27h6M13.6 13.6l4.2 4.2M36.2 36.2l4.2 4.2M13.6 40.4l4.2-4.2M36.2 17.8l4.2-4.2"/><circle class="an" cx="27" cy="27" r="16"/></svg></div>
+        <h3>Автоматизация</h3>
+        <p>Скрипты для рутины: отчёты, обработка таблиц и файлов, интеграции сервисов через API — одной кнопкой.</p>
+        <div class="s-foot"><b>от 800 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d1">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><path d="M10 14l4-6h26l4 6v30a3 3 0 01-3 3H13a3 3 0 01-3-3z"/><path d="M10 14h34"/><path d="M20 22a7 7 0 0014 0"/><path class="an" d="M17 38h20"/></svg></div>
+        <h3>Карточки WB и Ozon</h3>
+        <p>Продающие SEO-описания товаров с ключевыми словами из поиска маркетплейса и без стоп-слов.</p>
+        <div class="s-foot"><b>от 150 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d2">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="19"/><path d="M8 27h38M27 8c-6 6-8 12-8 19s2 13 8 19M27 8c6 6 8 12 8 19s-2 13-8 19"/><ellipse class="an" cx="27" cy="27" rx="25" ry="9" transform="rotate(-20 27 27)"/></svg></div>
+        <h3>Переводы</h3>
+        <p>Русский ⇄ английский: сайты, интерфейсы, документация и описания товаров с локализацией.</p>
+        <div class="s-foot"><b>от 250 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+    </div>
+  </div></section>
+
+  <!-- WORKS -->
+  <section id="works"><div class="wrap">
+    <div class="sh rv">
+      <div><span class="num">02 / РАБОТЫ</span><h2>Примеры проектов</h2></div>
+      <p>Демо-проекты, показывающие подход: реальная логика, аккуратный интерфейс, готовность к запуску.</p>
+    </div>
+    <div class="slider rv">
+      <div class="viewport" id="vp"><div class="slides" id="slides">
+
+        <article class="slide">
+          <div class="mock"><div class="phone">
+            <div class="notch"></div>
+            <div class="top"><span class="av"><svg><use href="#i-bot"/></svg></span><div><b>Barber Booking</b><br><span style="color:#666">бот</span></div></div>
+            <div class="msg b" style="animation-delay:.2s">Здравствуйте! Выберите услугу 👇</div>
+            <div class="msg u" style="animation-delay:.6s">Стрижка + борода</div>
+            <div class="msg b" style="animation-delay:1s">Выберите время на пятницу:</div>
+            <div class="kb" style="animation-delay:1.3s"><span>11:00</span><span class="on">12:30</span><span>14:00</span><span>15:30</span><span>17:00</span><span>18:30</span></div>
+            <div class="msg b" style="animation-delay:1.8s">✅ Вы записаны на пт, 12:30.<br>Ждём вас!</div>
+          </div></div>
+          <div class="s-info">
+            <span class="k">Telegram-бот · Python</span>
+            <h3>Бот онлайн-записи для барбершопа</h3>
+            <p>Клиенты сами записываются 24/7, администратор получает уведомления и видит расписание на день.</p>
+            <div class="chips"><span>aiogram 3</span><span>SQLite</span><span>FSM</span></div>
+            <ul><li>Свободные слоты считаются с учётом длительности услуги</li><li>Защита от двойной записи на одно время</li><li>Уведомления и расписание для администратора</li></ul>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="mock"><div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>studio-landing.ru</span></div>
+            <div class="bw"><div class="h"></div><div class="h2"></div><div class="t"></div><div class="t" style="width:80%"></div><div class="row"><div class="b1"></div><div class="b2"></div></div><div class="cards"><div></div><div></div><div></div></div></div>
+          </div></div>
+          <div class="s-info">
+            <span class="k">Лендинг · HTML / CSS / JS</span>
+            <h3>Посадочная страница для студии</h3>
+            <p>Одностраничник с анимациями, калькулятором и формой заявки, которая сразу приходит в Telegram.</p>
+            <div class="chips"><span>Адаптив</span><span>Анимации</span><span>Telegram API</span></div>
+            <ul><li>Загрузка меньше секунды, оптимизированные изображения</li><li>Корректно на любых экранах</li><li>Заявки сразу в мессенджер владельца</li></ul>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="mock"><div class="sheet" id="sheet">
+            <div class="r hd"><span>#</span><span>Товар</span><span>Цена</span><span>Δ 7д</span></div>
+          </div></div>
+          <div class="s-info">
+            <span class="k">Парсер · Python</span>
+            <h3>Мониторинг цен конкурентов</h3>
+            <p>Скрипт ежедневно собирает цены конкурентов и складывает их в Google Таблицу с подсветкой изменений.</p>
+            <div class="chips"><span>requests</span><span>Google Sheets API</span><span>Расписание</span></div>
+            <ul><li>Тысячи позиций за несколько минут</li><li>История изменения цен</li><li>Уведомление в Telegram при скачке цены</li></ul>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="mock"><div class="pcard">
+            <div class="img"><svg viewBox="0 0 70 70"><path d="M20 22c0-8 7-12 15-12s15 4 15 12"/><rect x="14" y="22" width="42" height="38" rx="6"/><path d="M26 34h18M26 42h12"/></svg></div>
+            <div class="pr">2 490 ₽<s>3 990 ₽</s></div>
+            <div class="nm">Рюкзак городской водонепроницаемый 25 л</div>
+            <div class="tx"><mark>Рюкзак городской</mark> из плотной ткани с <mark>водоотталкивающей пропиткой</mark> подойдёт для учёбы, работы и поездок. Отделение для <mark>ноутбука 15.6</mark>…</div>
+            <div class="seo"><span>Ключей: <b>24</b></span><span>Стоп-слов: <b>0</b></span></div>
+          </div></div>
+          <div class="s-info">
+            <span class="k">Копирайтинг · Маркетплейсы</span>
+            <h3>SEO-описания для карточек WB</h3>
+            <p>Описания, которые поднимают карточку в поиске и отвечают на вопросы покупателя до того, как он их задаст.</p>
+            <div class="chips"><span>Wildberries</span><span>Ozon</span><span>SEO</span></div>
+            <ul><li>Ключевые слова из реальных поисковых запросов</li><li>Без стоп-слов и нарушений правил площадки</li><li>Структура: выгоды → характеристики → применение</li></ul>
+          </div>
+        </article>
+
+      </div></div>
+      <div class="s-nav">
+        <div style="display:flex;align-items:center"><div class="dots" id="dots"></div><span class="counter"><b id="cn">01</b> / 04</span></div>
+        <div class="arrows"><button id="prev" aria-label="Назад"><svg><use href="#i-l"/></svg></button><button id="next" aria-label="Вперёд"><svg><use href="#i-r"/></svg></button></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- CALCULATOR -->
+  <section id="calc"><div class="wrap">
+    <div class="sh rv">
+      <div><span class="num">03 / СТОИМОСТЬ</span><h2>Рассчитайте проект</h2></div>
+      <p>Предварительная оценка за 10 секунд. Точную цену назову после короткого обсуждения.</p>
+    </div>
+    <div class="calc rv">
+      <div class="c-left">
+        <div class="c-group"><label>Тип проекта</label>
+          <div class="seg" id="ctype">
+            <button data-v="bot" class="on">Telegram-бот</button><button data-v="land">Лендинг</button><button data-v="pars">Парсер</button><button data-v="auto">Автоматизация</button>
+          </div>
+        </div>
+        <div class="c-group">
+          <div class="c-lbl"><span id="cxLbl">Сложность сценария</span><b id="cxVal">Средняя</b></div>
+          <input type="range" id="cx" min="1" max="5" step="1" value="3">
+          <div class="ticks"><span>Простой</span><span>Сложный</span></div>
+        </div>
+        <div class="c-group">
+          <div class="c-lbl"><span>Срок</span><b id="spVal">Стандартный</b></div>
+          <input type="range" id="sp" min="1" max="3" step="1" value="2">
+          <div class="ticks"><span>Не горит</span><span>Срочно</span></div>
+        </div>
+        <div class="c-group" style="margin-bottom:0">
+          <label class="tog"><span>Запуск на сервере <small>+ 400 ₽</small></span><input type="checkbox" id="o1"><span class="sw"></span></label>
+          <label class="tog"><span>Интеграция с Google Таблицами <small>+ 500 ₽</small></span><input type="checkbox" id="o2"><span class="sw"></span></label>
+          <label class="tog"><span>Поддержка 30 дней <small>+ 700 ₽</small></span><input type="checkbox" id="o3"><span class="sw"></span></label>
+        </div>
+      </div>
+      <div class="c-right">
+        <span class="k">Предварительно</span>
+        <div class="total"><span id="tot">0</span> <small>₽</small></div>
+        <div class="c-days">Срок: <span id="days">—</span></div>
+        <ul class="c-break" id="brk"></ul>
+        <a href="#contact" class="btn" id="calcGo">Заказать по этой цене <svg><use href="#i-arrow"/></svg></a>
+        <div class="c-note">Оплата через безопасную сделку</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- PROCESS -->
+  <section id="process"><div class="wrap">
+    <div class="sh rv"><div><span class="num">04 / ПРОЦЕСС</span><h2>Как мы работаем</h2></div></div>
+    <div class="proc rv" id="proc"><div class="fill"></div>
+      <div class="st-i"><div class="dot">01</div><h3>Задача</h3><p>Вы описываете, что нужно. Уточняю детали, называю цену и срок.</p></div>
+      <div class="st-i"><div class="dot">02</div><h3>Разработка</h3><p>Показываю промежуточный результат и вношу правки по ходу.</p></div>
+      <div class="st-i"><div class="dot">03</div><h3>Сдача</h3><p>Передаю готовое решение, исходный код и инструкцию по запуску.</p></div>
+      <div class="st-i"><div class="dot">04</div><h3>Поддержка</h3><p>14 дней бесплатных правок и помощь, если что-то пойдёт не так.</p></div>
+    </div>
+  </div></section>
+
+  <!-- FAQ -->
+  <section id="faq"><div class="wrap faq">
+    <div class="rv"><span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">05 / ВОПРОСЫ</span><h2>Частые вопросы</h2></div>
+    <div class="rv d1" id="qa">
+      <div class="qa open"><button>Как происходит оплата?<span class="pm"></span></button><div class="ans"><div><p>Через безопасную сделку на фриланс-бирже: вы вносите оплату, а я получаю её только после того, как вы примете работу. Для крупных проектов возможна оплата по этапам.</p></div></div></div>
+      <div class="qa"><button>Что я получу после сдачи?<span class="pm"></span></button><div class="ans"><div><p>Работающее решение, полный исходный код, инструкцию по запуску и 14 дней бесплатных мелких правок.</p></div></div></div>
+      <div class="qa"><button>Где будет работать бот или сайт?<span class="pm"></span></button><div class="ans"><div><p>На вашем сервере или хостинге. Если его нет — подскажу недорогой вариант и помогу всё развернуть.</p></div></div></div>
+      <div class="qa"><button>Можно ли доработать проект позже?<span class="pm"></span></button><div class="ans"><div><p>Да. Код пишется так, чтобы его было легко расширять, — добавлю новые функции по отдельной договорённости.</p></div></div></div>
+      <div class="qa"><button>Работаете с иностранными заказчиками?<span class="pm"></span></button><div class="ans"><div><p>Да, общаюсь на русском и английском. I'm happy to work with you in English.</p></div></div></div>
+    </div>
+  </div></section>
+
+  <!-- CONTACT -->
+  <section id="contact"><div class="wrap">
+    <div class="contact rv">
+      <canvas id="cOrbit"></canvas>
+      <div>
+        <span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">06 / КОНТАКТ</span>
+        <h2>Есть задача?<br>Давайте обсудим</h2>
+        <p class="lead">Опишите идею в паре предложений — отвечу с оценкой стоимости и сроков в течение нескольких часов.</p>
+        <div class="cl">
+          <a href="mailto:proximityagent.dev@gmail.com"><i><svg><use href="#i-mail"/></svg></i>proximityagent.dev@gmail.com</a>
+          <a href="https://github.com/proximityagent211" target="_blank" rel="noopener"><i><svg><use href="#i-gh"/></svg></i>github.com/proximityagent211</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <div class="fld"><input id="fn" name="name" placeholder=" " required autocomplete="name"><label for="fn">Ваше имя</label></div>
+        <div class="fld"><input id="fc" name="contact" placeholder=" " required><label for="fc">Telegram или email</label></div>
+        <div class="fld"><textarea id="ft" name="task" rows="3" placeholder=" "></textarea><label for="ft">Что нужно сделать?</label></div>
+        <button class="btn" type="submit">Отправить заявку <svg><use href="#i-arrow"/></svg></button>
+        <div class="f-ok"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="26" stroke-opacity=".3"/><path d="M17 29l7 7 15-16"/></svg><p>Почти готово — откроется письмо с вашей заявкой.<br>Просто нажмите «Отправить».</p></div>
+      </form>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 ProximityAgent</span>
+  <span>Боты · Сайты · Автоматизация</span>
+  <a href="#top" class="totop" aria-label="Наверх"><svg><use href="#i-up"/></svg></a>
+</div></footer>
+
+<script src="main.js?v=4"></script>
+</body>
+</html>
