@@ -308,4 +308,41 @@ if (mCta) {
   }), { threshold: .1 });
   cio.observe($('.hero')); cio.observe($('#contact'));
 }
+
+/* ---------- v7: scroll progress ---------- */
+const prog = $('#prog');
+const onProg = () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%'; };
+addEventListener('scroll', onProg, { passive: true }); onProg();
+
+/* ---------- v7: big section numbers + word reveal ---------- */
+$$('.sh').forEach(sh => { const n = (sh.querySelector('.num') || {}).textContent; if (n) sh.dataset.n = n.trim().slice(0, 2); });
+$$('section h2').forEach(h => {
+  const walk = node => [...node.childNodes].forEach(ch => {
+    if (ch.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      ch.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        const w = document.createElement('span'); w.className = 'w';
+        const i = document.createElement('i'); i.textContent = part; w.appendChild(i); frag.appendChild(w);
+      });
+      ch.replaceWith(frag);
+    } else if (ch.nodeType === 1 && ch.tagName !== 'BR') walk(ch);
+  });
+  walk(h);
+  $$('.w > i', h).forEach((i, k) => i.style.transitionDelay = (k * 0.06) + 's');
+  const host = h.closest('.rv') || h;
+  if (!h.closest('.rv')) rio.observe(h);
+});
+
+/* ---------- v7: magnetic buttons ---------- */
+if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce) {
+  $$('.btn.mag, .ring-badge').forEach(b => {
+    b.addEventListener('mousemove', e => {
+      const r = b.getBoundingClientRect();
+      b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`;
+    });
+    b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+  });
+}
 })();
