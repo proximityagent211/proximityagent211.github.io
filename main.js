@@ -228,10 +228,14 @@ go(0);
 
 /* ---------- calculator ---------- */
 const P = {
-  bot:  { base: 500,  name: 'Telegram-бот', cx: 'Сложность сценария', days: [1, 2, 3, 4, 6] },
-  land: { base: 1000, name: 'Лендинг', cx: 'Количество блоков', days: [1, 2, 3, 4, 5] },
-  pars: { base: 300,  name: 'Парсер', cx: 'Сложность сайта', days: [1, 1, 2, 3, 4] },
-  auto: { base: 300,  name: 'Автоматизация', cx: 'Объём задачи', days: [1, 1, 2, 3, 4] },
+  bot:   { base: 500,  name: 'Telegram-бот', cx: 'Сложность сценария', days: [1, 2, 3, 4, 5] },
+  ai:    { base: 1000, name: 'Бот с ИИ', cx: 'Объём базы знаний', days: [2, 2, 3, 4, 6] },
+  land:  { base: 1000, name: 'Лендинг', cx: 'Количество блоков', days: [1, 2, 3, 4, 5] },
+  app:   { base: 1000, name: 'Mini App', cx: 'Количество экранов', days: [2, 3, 4, 5, 7] },
+  pars:  { base: 300,  name: 'Парсер', cx: 'Сложность сайта', days: [1, 1, 2, 3, 4] },
+  auto:  { base: 300,  name: 'Скрипт', cx: 'Объём задачи', days: [1, 1, 2, 3, 4] },
+  sheet: { base: 200,  name: 'Таблицы', cx: 'Сложность расчётов', days: [1, 1, 1, 2, 3] },
+  fix:   { base: 300,  name: 'Исправление кода', cx: 'Объём правок', days: [1, 1, 2, 2, 3] },
 };
 const CX = ['Минимальная', 'Простая', 'Средняя', 'Выше средней', 'Сложная'];
 const SP = ['Не горит', 'Стандартный', 'Срочно'];
@@ -277,4 +281,31 @@ $('#form').addEventListener('submit', e => {
   f.classList.add('sent');
   setTimeout(() => { location.href = `mailto:proximityagent.dev@gmail.com?subject=${encodeURIComponent('Заявка с сайта — ' + name)}&body=${encodeURIComponent(body)}`; }, 900);
 });
+
+/* ---------- v6: service filter ---------- */
+$$('#svcTabs button').forEach(b => b.addEventListener('click', () => {
+  $$('#svcTabs button').forEach(x => x.classList.toggle('on', x === b));
+  const f = b.dataset.f;
+  $$('#svcGrid .s-card').forEach(c => {
+    const show = f === 'all' || c.dataset.cat === f;
+    c.classList.toggle('hide', !show);
+    if (show) { c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop', 'in'); }
+  });
+}));
+
+/* ---------- prefill form from services / packages ---------- */
+const prefill = txt => { const t = $('#ft'); if (t && !t.value) t.value = txt; };
+$$('[data-svc]').forEach(c => c.addEventListener('click', () => prefill('Услуга: ' + c.dataset.svc + '. ')));
+$$('[data-pkg]').forEach(c => c.addEventListener('click', () => prefill('Формат: ' + c.dataset.pkg + '. ')));
+
+/* ---------- mobile sticky CTA ---------- */
+const mCta = $('#mCta');
+if (mCta) {
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (e.target.id === 'contact') mCta.dataset.c = e.isIntersecting ? '1' : '';
+    else mCta.dataset.h = e.isIntersecting ? '1' : '';
+    mCta.classList.toggle('show', !mCta.dataset.h && !mCta.dataset.c);
+  }), { threshold: .1 });
+  cio.observe($('.hero')); cio.observe($('#contact'));
+}
 })();

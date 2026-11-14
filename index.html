@@ -15,7 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/planet.webp" type="image/webp">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=6">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"ProximityAgent","url":"https://proximityagent211.github.io/","email":"proximityagent.dev@gmail.com","description":"Telegram-боты, лендинги, парсинг, автоматизация на Python, тексты и переводы. Разовые задачи от 100 ₽.","areaServed":"RU","priceRange":"100–1000+ ₽"}</script>
 </head>
 <body>
 <div id="loader"><div class="ld"><i></i><i></i><b></b></div></div>
@@ -48,6 +49,7 @@
       <a href="#services">Услуги</a>
       <a href="#works">Работы</a>
       <a href="#calc">Стоимость</a>
+      <a href="#packages">Форматы</a>
       <a href="#faq">Вопросы</a>
       <a href="#contact" class="btn sm">Обсудить проект</a>
     </nav>
@@ -64,14 +66,14 @@
         <span class="line"><span>автоматизация</span></span>
         <span class="line"><span class="o">на орбите</span> <span>бизнеса</span></span>
       </h1>
-      <p class="lead">Разрабатываю Telegram-ботов, лендинги и парсеры под ключ. Быстро, по фиксированной цене, с исходным кодом и поддержкой после сдачи.</p>
+      <p class="lead">Разрабатываю Telegram-ботов, лендинги и парсеры под ключ. Быстро, по фиксированной цене, с исходным кодом и поддержкой после сдачи. Цены — от 100 ₽.</p>
       <div class="acts">
         <a href="#contact" class="btn">Обсудить задачу <svg><use href="#i-arrow"/></svg></a>
         <a href="#works" class="btn ghost">Смотреть работы</a>
       </div>
       <div class="stats">
         <div><b data-count="3">0</b><span>дня — средний срок</span></div>
-        <div><b data-count="14">0</b><span>дней поддержки</span></div>
+        <div><b data-count="12">0</b><span>направлений работы</span></div>
         <div><b>24/7</b><span>на связи</span></div>
       </div>
     </div>
@@ -92,43 +94,85 @@
   <section id="services"><div class="wrap">
     <div class="sh rv">
       <div><span class="num">01 / УСЛУГИ</span><h2>Что я делаю</h2></div>
-      <p>Каждая услуга — с фиксированной ценой, понятным сроком и исходниками на руках.</p>
+      <p>12 направлений — разовые задачи с фиксированной ценой, понятным сроком и исходниками на руках.</p>
     </div>
-    <div class="svc">
-      <a href="#contact" class="s-card rv" data-svc="bot">
+    <div class="svc-tabs rv" id="svcTabs" role="tablist">
+      <button class="on" data-f="all">Все <i>12</i></button>
+      <button data-f="dev">Разработка <i>5</i></button>
+      <button data-f="auto">Автоматизация <i>4</i></button>
+      <button data-f="text">Тексты <i>3</i></button>
+    </div>
+    <div class="svc" id="svcGrid">
+      <a href="#contact" class="s-card rv" data-cat="dev" data-svc="Telegram-бот">
         <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="8" y="12" width="38" height="28" rx="9"/><path d="M17 40l-5 7 11-7"/><circle cx="20" cy="26" r="2.5"/><circle cx="34" cy="26" r="2.5"/><path d="M27 12V5"/><circle cx="27" cy="4" r="1.6"/><circle class="an" cx="27" cy="26" r="24"/></svg></div>
-        <h3>Telegram-боты</h3>
-        <p>Запись клиентов, приём заявок, каталог с оплатой, рассылки, уведомления администратору и выгрузка в таблицы.</p>
+        <span class="s-tag">Разработка</span><h3>Telegram-боты</h3>
+        <p>Запись клиентов, приём заявок, каталог, рассылки, уведомления администратору.</p>
         <div class="s-foot"><b>от 500 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
-      <a href="#contact" class="s-card rv d1">
-        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="5" y="9" width="44" height="34" rx="5"/><path d="M5 17h44"/><circle cx="10" cy="13" r=".8"/><circle cx="14" cy="13" r=".8"/><path d="M12 25h18M12 31h12"/><rect x="34" y="23" width="9" height="12" rx="2"/><path class="an" d="M14 49h26"/></svg></div>
-        <h3>Лендинги и сайты</h3>
-        <p>Адаптивные одностраничники с формой заявки в Telegram или на почту. Помогу с хостингом и доменом.</p>
+      <a href="#contact" class="s-card rv d1" data-cat="dev" data-svc="Бот с ИИ">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><path d="M27 8c-8 0-14 5-14 12 0 4 2 7 5 9v6l6-3h3c8 0 14-5 14-12S35 8 27 8z"/><path d="M21 20h.01M27 20h.01M33 20h.01"/><path class="an" d="M10 44c6-4 12-5 17-5s11 1 17 5"/><path d="M42 6l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></svg></div>
+        <span class="s-tag">Разработка</span><h3>Бот с ИИ-ассистентом</h3>
+        <p>Бот, который отвечает клиентам на вопросы по вашей базе знаний с помощью нейросети.</p>
         <div class="s-foot"><b>от 1 000 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
-      <a href="#contact" class="s-card rv d2">
+      <a href="#contact" class="s-card rv d2" data-cat="dev" data-svc="Лендинг">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="5" y="9" width="44" height="34" rx="5"/><path d="M5 17h44"/><circle cx="10" cy="13" r=".8"/><circle cx="14" cy="13" r=".8"/><path d="M12 25h18M12 31h12"/><rect x="34" y="23" width="9" height="12" rx="2"/><path class="an" d="M14 49h26"/></svg></div>
+        <span class="s-tag">Разработка</span><h3>Лендинги и сайты</h3>
+        <p>Адаптивные одностраничники с анимациями и формой заявки в Telegram или на почту.</p>
+        <div class="s-foot"><b>от 1 000 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv" data-cat="dev" data-svc="Mini App">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="15" y="5" width="24" height="44" rx="5"/><path d="M24 9h6"/><rect x="20" y="15" width="6" height="6" rx="1.5"/><rect x="28" y="15" width="6" height="6" rx="1.5"/><rect x="20" y="23" width="6" height="6" rx="1.5"/><rect class="an" x="28" y="23" width="6" height="6" rx="1.5"/><path d="M22 40h10"/></svg></div>
+        <span class="s-tag">Разработка</span><h3>Telegram Mini App</h3>
+        <p>Мини-приложение внутри Telegram: меню, запись, магазин, личный кабинет.</p>
+        <div class="s-foot"><b>от 1 000 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d1" data-cat="dev" data-svc="Исправление кода">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><path d="M18 16l-11 11 11 11M36 16l11 11-11 11"/><path d="M31 10l-8 34"/><circle class="an" cx="27" cy="27" r="23"/></svg></div>
+        <span class="s-tag">Разработка</span><h3>Исправление и доработка кода</h3>
+        <p>Найду и исправлю ошибку, допишу функцию, обновлю бота или сайт, который сломался.</p>
+        <div class="s-foot"><b>от 300 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d2" data-cat="auto" data-svc="Парсинг">
         <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="20" cy="20" r="13"/><path d="M30 30l14 14"/><path d="M13 22l4-5 4 4 5-7"/><path class="an" d="M38 8h10v10M48 8L36 20"/></svg></div>
-        <h3>Парсинг данных</h3>
-        <p>Сбор цен, товаров и контактов с сайтов и маркетплейсов в Excel или Google Таблицы, в том числе по расписанию.</p>
+        <span class="s-tag">Автоматизация</span><h3>Парсинг данных</h3>
+        <p>Цены, товары и контакты с сайтов и маркетплейсов в Excel или Google Таблицы.</p>
         <div class="s-foot"><b>от 300 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
-      <a href="#contact" class="s-card rv">
+      <a href="#contact" class="s-card rv" data-cat="auto" data-svc="Скрипт автоматизации">
         <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="7"/><path d="M27 8v6M27 40v6M8 27h6M40 27h6M13.6 13.6l4.2 4.2M36.2 36.2l4.2 4.2M13.6 40.4l4.2-4.2M36.2 17.8l4.2-4.2"/><circle class="an" cx="27" cy="27" r="16"/></svg></div>
-        <h3>Автоматизация</h3>
-        <p>Скрипты для рутины: отчёты, обработка таблиц и файлов, интеграции сервисов через API — одной кнопкой.</p>
+        <span class="s-tag">Автоматизация</span><h3>Скрипты на Python</h3>
+        <p>Отчёты, обработка файлов, выгрузки и интеграции сервисов по API — одной кнопкой.</p>
         <div class="s-foot"><b>от 300 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
-      <a href="#contact" class="s-card rv d1">
+      <a href="#contact" class="s-card rv d1" data-cat="auto" data-svc="Google Таблицы и Excel">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="8" y="8" width="38" height="38" rx="5"/><path d="M8 19h38M8 30h38M21 8v38M33 8v38"/><path class="an" d="M24 41l4-6 4 3 6-9"/></svg></div>
+        <span class="s-tag">Автоматизация</span><h3>Google Таблицы и Excel</h3>
+        <p>Формулы, сводные, макросы и Apps Script: таблица, которая считает и обновляется сама.</p>
+        <div class="s-foot"><b>от 200 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d2" data-cat="auto" data-svc="Запуск на сервере">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><rect x="9" y="9" width="36" height="13" rx="3"/><rect x="9" y="26" width="36" height="13" rx="3"/><circle cx="16" cy="15.5" r="1.5"/><circle cx="16" cy="32.5" r="1.5"/><path d="M24 15.5h14M24 32.5h14"/><path class="an" d="M27 39v8M17 47h20"/></svg></div>
+        <span class="s-tag">Автоматизация</span><h3>Запуск на сервере</h3>
+        <p>Размещу бота или скрипт на VPS, настрою автозапуск, чтобы работал 24/7 без вашего ПК.</p>
+        <div class="s-foot"><b>от 300 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv" data-cat="text" data-svc="Карточки WB/Ozon">
         <div class="s-ico"><svg viewBox="0 0 54 54"><path d="M10 14l4-6h26l4 6v30a3 3 0 01-3 3H13a3 3 0 01-3-3z"/><path d="M10 14h34"/><path d="M20 22a7 7 0 0014 0"/><path class="an" d="M17 38h20"/></svg></div>
-        <h3>Карточки WB и Ozon</h3>
-        <p>Продающие SEO-описания товаров с ключевыми словами из поиска маркетплейса и без стоп-слов.</p>
+        <span class="s-tag">Тексты</span><h3>Карточки WB и Ozon</h3>
+        <p>SEO-описания товаров с ключевыми словами из поиска маркетплейса и без стоп-слов.</p>
         <div class="s-foot"><b>от 100 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
-      <a href="#contact" class="s-card rv d2">
+      <a href="#contact" class="s-card rv d1" data-cat="text" data-svc="Тексты для сайта">
+        <div class="s-ico"><svg viewBox="0 0 54 54"><path d="M14 6h20l10 10v32H14z"/><path d="M34 6v10h10"/><path d="M20 24h18M20 30h18M20 36h12"/><path class="an" d="M8 14v34h6"/></svg></div>
+        <span class="s-tag">Тексты</span><h3>Тексты и рассылки</h3>
+        <p>Тексты для лендинга, посты, email-рассылки и сценарии бота — коротко и по делу.</p>
+        <div class="s-foot"><b>от 200 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
+      </a>
+      <a href="#contact" class="s-card rv d2" data-cat="text" data-svc="Перевод">
         <div class="s-ico"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="19"/><path d="M8 27h38M27 8c-6 6-8 12-8 19s2 13 8 19M27 8c6 6 8 12 8 19s-2 13-8 19"/><ellipse class="an" cx="27" cy="27" rx="25" ry="9" transform="rotate(-20 27 27)"/></svg></div>
-        <h3>Переводы</h3>
-        <p>Русский ⇄ английский: сайты, интерфейсы, документация и описания товаров с локализацией.</p>
+        <span class="s-tag">Тексты</span><h3>Переводы RU ⇄ EN</h3>
+        <p>Сайты, интерфейсы, документация и карточки товаров с локализацией под рынок.</p>
         <div class="s-foot"><b>от 100 ₽</b><span class="arr"><svg><use href="#i-ne"/></svg></span></div>
       </a>
     </div>
@@ -224,7 +268,7 @@
       <div class="c-left">
         <div class="c-group"><label>Тип проекта</label>
           <div class="seg" id="ctype">
-            <button data-v="bot" class="on">Telegram-бот</button><button data-v="land">Лендинг</button><button data-v="pars">Парсер</button><button data-v="auto">Автоматизация</button>
+            <button data-v="bot" class="on">Telegram-бот</button><button data-v="ai">Бот с ИИ</button><button data-v="land">Лендинг</button><button data-v="app">Mini App</button><button data-v="pars">Парсер</button><button data-v="auto">Скрипт</button><button data-v="sheet">Таблицы</button><button data-v="fix">Исправление кода</button>
           </div>
         </div>
         <div class="c-group">
@@ -265,9 +309,57 @@
     </div>
   </div></section>
 
+  <!-- PACKAGES -->
+  <section id="packages"><div class="wrap">
+    <div class="sh rv">
+      <div><span class="num">05 / ФОРМАТЫ</span><h2>Выберите формат</h2></div>
+      <p>Готовые наборы для самых частых задач. Если нужно другое — соберём под вас.</p>
+    </div>
+    <div class="pk">
+      <div class="pk-card rv">
+        <span class="pk-name">Старт</span>
+        <div class="pk-price">от 300 <small>₽</small></div>
+        <p>Небольшая задача за день: правка, скрипт, парсер одной страницы, таблица.</p>
+        <ul><li>1 задача</li><li>срок — 1 день</li><li>исходники и инструкция</li><li>3 дня правок</li></ul>
+        <a href="#contact" class="btn ghost" data-pkg="Старт">Выбрать</a>
+      </div>
+      <div class="pk-card hot rv d1">
+        <span class="pk-badge">Чаще всего</span>
+        <span class="pk-name">Бизнес-бот</span>
+        <div class="pk-price">от 500 <small>₽</small></div>
+        <p>Telegram-бот для записи или заявок, который работает на вас круглосуточно.</p>
+        <ul><li>сценарий под ваш бизнес</li><li>уведомления админу</li><li>срок — 1–3 дня</li><li>7 дней правок</li></ul>
+        <a href="#contact" class="btn" data-pkg="Бизнес-бот">Выбрать <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="pk-card rv d2">
+        <span class="pk-name">Под ключ</span>
+        <div class="pk-price">от 1 000 <small>₽</small></div>
+        <p>Лендинг + бот для заявок или бот с ИИ. Всё связано и запущено на сервере.</p>
+        <ul><li>сайт или ИИ-бот</li><li>заявки в Telegram</li><li>запуск на сервере</li><li>14 дней правок</li></ul>
+        <a href="#contact" class="btn ghost" data-pkg="Под ключ">Выбрать</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- GUARANTEES -->
+  <section id="why"><div class="wrap">
+    <div class="sh rv"><div><span class="num">06 / ГАРАНТИИ</span><h2>Почему со мной спокойно</h2></div></div>
+    <div class="why">
+      <div class="w-item rv"><svg viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 9-6 15-13 17C13 34 7 28 7 19V9z"/><path d="M14 20l4 4 8-9"/></svg><h3>Оплата частями</h3><p>50% до начала, 50% после того, как вы проверили результат.</p></div>
+      <div class="w-item rv d1"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15"/><path d="M20 11v9l6 4"/></svg><h3>Сроки в днях</h3><p>Большинство задач — за 1–3 дня. Срок называю до старта.</p></div>
+      <div class="w-item rv d2"><svg viewBox="0 0 40 40"><path d="M13 12l-8 8 8 8M27 12l8 8-8 8"/></svg><h3>Код — ваш</h3><p>Отдаю исходники и понятную инструкцию по запуску.</p></div>
+      <div class="w-item rv"><svg viewBox="0 0 40 40"><path d="M8 20a12 12 0 0121-8l3 3M32 20a12 12 0 01-21 8l-3-3"/><path d="M32 8v7h-7M8 32v-7h7"/></svg><h3>Правки бесплатно</h3><p>До 14 дней бесплатных правок после сдачи.</p></div>
+      <div class="w-item rv d1"><svg viewBox="0 0 40 40"><rect x="7" y="10" width="26" height="20" rx="3"/><path d="M7 16h26"/><path d="M12 24h6"/></svg><h3>Цена фиксирована</h3><p>Никаких доплат «по ходу» — цена согласуется заранее.</p></div>
+      <div class="w-item rv d2"><svg viewBox="0 0 40 40"><path d="M6 30l8-12 7 7 6-9 7 14"/><path d="M6 34h28"/></svg><h3>Промежуточные показы</h3><p>Вижу задачу вашими глазами: показываю результат по ходу работы.</p></div>
+    </div>
+    <div class="stack rv">
+      <span>Python</span><span>aiogram</span><span>JavaScript</span><span>HTML / CSS</span><span>Telegram Bot API</span><span>Mini Apps</span><span>Google Apps Script</span><span>Excel / VBA</span><span>SQLite</span><span>REST API</span><span>Linux / VPS</span><span>Нейросети / LLM</span>
+    </div>
+  </div></section>
+
   <!-- FAQ -->
   <section id="faq"><div class="wrap faq">
-    <div class="rv"><span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">05 / ВОПРОСЫ</span><h2>Частые вопросы</h2></div>
+    <div class="rv"><span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">07 / ВОПРОСЫ</span><h2>Частые вопросы</h2></div>
     <div class="rv d1" id="qa">
       <div class="qa open"><button>Как происходит оплата?<span class="pm"></span></button><div class="ans"><div><p>Через безопасную сделку на фриланс-бирже: вы вносите оплату, а я получаю её только после того, как вы примете работу. Для крупных проектов возможна оплата по этапам.</p></div></div></div>
       <div class="qa"><button>Что я получу после сдачи?<span class="pm"></span></button><div class="ans"><div><p>Работающее решение, полный исходный код, инструкцию по запуску и 14 дней бесплатных мелких правок.</p></div></div></div>
@@ -282,7 +374,7 @@
     <div class="contact rv">
       <canvas id="cOrbit"></canvas>
       <div>
-        <span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">06 / КОНТАКТ</span>
+        <span class="num" style="font-family:var(--fh);font-size:13px;color:var(--muted)">08 / КОНТАКТ</span>
         <h2>Есть задача?<br>Давайте обсудим</h2>
         <p class="lead">Опишите идею в паре предложений — отвечу с оценкой стоимости и сроков в течение нескольких часов.</p>
         <div class="cl">
@@ -301,12 +393,14 @@
   </div></section>
 </main>
 
+<a href="#contact" class="m-cta" id="mCta">Обсудить задачу <svg><use href="#i-arrow"/></svg></a>
+
 <footer><div class="wrap">
   <span>© 2026 ProximityAgent</span>
   <span>Боты · Сайты · Автоматизация</span>
   <a href="#top" class="totop" aria-label="Наверх"><svg><use href="#i-up"/></svg></a>
 </div></footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=6"></script>
 </body>
 </html>
