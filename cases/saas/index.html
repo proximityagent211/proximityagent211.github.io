@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowdesk — CRM для отделов продаж B2B</title>
+<meta name="description" content="Демо-проект ProximityAgent: лендинг B2B SaaS-продукта с тарифами и формой демо.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--soft:#f5f7fb;--ink:#0f172a;--mut:#5b6476;--line:#e5e8ef;--pr:#2f5bff;--pr2:#7b61ff;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Onest,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:66px}
+.lg{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px}
+.lg i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--pr),var(--pr2));display:block;position:relative}
+.lg i:after{content:"";position:absolute;inset:8px 6px;border:2.5px solid #fff;border-radius:3px;border-right:0}
+nav{display:flex;gap:28px;font-size:14px;color:var(--mut)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pr);color:#fff;padding:12px 20px;border-radius:12px;font:600 14px Onest;border:0;cursor:pointer;transition:.2s}
+.btn:hover{background:#1f45e0}
+.btn.g{background:var(--soft);color:var(--ink)}
+.hero{text-align:center;padding:80px 0 40px}
+.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:30px;padding:6px 14px 6px 6px;font-size:13px;color:var(--mut)}
+.pill b{background:#eaf0ff;color:var(--pr);border-radius:20px;padding:2px 10px;font-weight:600}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-.035em;margin:22px auto 18px;max-width:880px}
+h1 span{background:linear-gradient(90deg,var(--pr),var(--pr2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);font-size:19px;max-width:640px;margin:0 auto 30px}
+.cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.note{font-size:13px;color:var(--mut);margin-top:14px}
+.app{margin:50px auto 0;max-width:1060px;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px -20px rgba(47,91,255,.25);overflow:hidden;background:var(--soft);text-align:left}
+.app .bar{height:38px;display:flex;gap:6px;align-items:center;padding:0 14px;border-bottom:1px solid var(--line);background:#fff}
+.app .bar i{width:10px;height:10px;border-radius:50%;background:#e2e5ec}
+.app .in{display:grid;grid-template-columns:190px 1fr;min-height:400px}
+.side{background:#fff;border-right:1px solid var(--line);padding:16px 12px;font-size:13px;color:var(--mut)}
+.side div{padding:8px 10px;border-radius:8px;margin-bottom:2px}
+.side .on{background:#eaf0ff;color:var(--pr);font-weight:600}
+.main{padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-content:start}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi small{color:var(--mut);font-size:12px}.kpi b{display:block;font-size:22px}.kpi em{font-style:normal;color:var(--ok);font-size:12px}
+.pipe{grid-column:span 4;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
+.col h5{font-size:12px;color:var(--mut);margin-bottom:8px;display:flex;justify-content:space-between}
+.deal{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;margin-bottom:6px;background:var(--soft)}
+.deal b{display:block;font-size:13px}
+.logos{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;padding:50px 0;color:#9aa2b3;font-weight:700;font-size:20px;letter-spacing:-.02em}
+section{padding:80px 0}
+.sh{text-align:center;max-width:680px;margin:0 auto 46px}
+.sh h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.1}
+.sh p{color:var(--mut);margin-top:12px;font-size:17px}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.f{border:1px solid var(--line);border-radius:18px;padding:26px;transition:.25s}
+.f:hover{border-color:#c9d5ff;box-shadow:0 12px 30px -12px rgba(47,91,255,.2)}
+.f .ic{width:44px;height:44px;border-radius:12px;background:#eaf0ff;display:grid;place-items:center;margin-bottom:16px;color:var(--pr);font-size:20px}
+.f h3{font-size:18px;margin-bottom:6px}.f p{color:var(--mut);font-size:15px}
+.soft{background:var(--soft)}
+.roi{display:grid;grid-template-columns:1fr 1fr;gap:30px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px;align-items:center}
+.roi label{display:block;font-size:14px;color:var(--mut);margin:16px 0 6px}
+.roi label b{float:right;color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--pr)}
+.res{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;border-radius:18px;padding:30px}
+.res small{opacity:.8}.res b{display:block;font-size:44px;letter-spacing:-.03em;line-height:1.1;margin:6px 0 14px}
+.tg{display:inline-flex;background:var(--soft);border-radius:12px;padding:4px;margin:0 auto 34px}
+.tg button{border:0;background:none;padding:9px 18px;border-radius:9px;font:600 14px Onest;color:var(--mut);cursor:pointer}
+.tg button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.tg em{font-style:normal;color:var(--ok);font-size:12px;margin-left:4px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pl{border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column}
+.pl.hot{border:2px solid var(--pr);position:relative}
+.pl.hot:before{content:"Популярный";position:absolute;top:-12px;left:24px;background:var(--pr);color:#fff;font-size:12px;padding:2px 10px;border-radius:10px}
+.pl h3{font-size:18px}.pl .pr{font-size:40px;font-weight:700;letter-spacing:-.03em;margin:10px 0 2px}
+.pl .pr small{font-size:15px;color:var(--mut);font-weight:400}
+.pl ul{list-style:none;margin:18px 0 24px;flex:1}
+.pl li{padding:6px 0 6px 26px;position:relative;font-size:15px}
+.pl li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.pl .btn{justify-content:center}
+.faq{max-width:760px;margin:0 auto}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";color:var(--pr);font-size:22px;line-height:1}
+details[open] summary:after{content:"−"}
+details p{color:var(--mut);margin-top:10px}
+.demo-f{background:var(--ink);color:#fff;border-radius:26px;padding:50px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.demo-f h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.03em;line-height:1.1}
+.demo-f form{display:grid;gap:10px}
+.demo-f input,.demo-f select{background:#1e293b;border:1px solid #334155;color:#fff;border-radius:12px;padding:14px;font:15px Onest}
+.ok{display:none;background:#123d2a;border:1px solid #1f7a4d;border-radius:12px;padding:14px;color:#a7f3c8}
+footer{padding:40px 0 90px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+.demo{position:fixed;left:16px;bottom:16px;z-index:60;background:#0f172a;color:#fff;font:500 12px/1 Onest,sans-serif;padding:10px 14px;border-radius:30px;opacity:.9}
+@media(max-width:900px){nav{display:none}.app .in{grid-template-columns:1fr}.side{display:none}.main,.pipe{grid-template-columns:1fr 1fr}.pipe{grid-column:span 2}.feats,.plans,.roi,.demo-f{grid-template-columns:1fr}.demo-f{padding:30px}}
+</style>
+</head>
+<body>
+<header><div class="w"><a class="lg" href="#"><i></i>Flowdesk</a>
+<nav><a href="#feat">Возможности</a><a href="#roi">Выгода</a><a href="#price">Тарифы</a><a href="#faq">Вопросы</a></nav>
+<a class="btn" href="#demo">Запросить демо</a></div></header>
+
+<div class="w">
+<section class="hero">
+  <span class="pill"><b>Новое</b>AI-подсказки менеджерам в каждой сделке</span>
+  <h1>CRM, которую ваш отдел продаж <span>реально заполняет</span></h1>
+  <p>Flowdesk сам подтягивает письма, звонки и счета из 1С в карточку сделки. Менеджеры продают, а не заполняют поля.</p>
+  <div class="cta"><a class="btn" href="#demo">Попробовать 14 дней бесплатно</a><a class="btn g" href="#feat">Как это работает</a></div>
+  <div class="note">Без карты · Перенос данных из Битрикс24 и amoCRM за 1 день</div>
+  <div class="app"><div class="bar"><i></i><i></i><i></i></div><div class="in">
+    <div class="side"><div class="on">▦ Воронка</div><div>☰ Сделки</div><div>◎ Клиенты</div><div>✉ Почта</div><div>☏ Звонки</div><div>▤ Отчёты</div></div>
+    <div class="main">
+      <div class="kpi"><small>Выручка, ноябрь</small><b>18,4 млн ₽</b><em>▲ 23%</em></div>
+      <div class="kpi"><small>Сделок в работе</small><b>142</b><em>▲ 11</em></div>
+      <div class="kpi"><small>Конверсия</small><b>31%</b><em>▲ 4 п.п.</em></div>
+      <div class="kpi"><small>Цикл сделки</small><b>18 дн.</b><em>▼ 6 дн.</em></div>
+      <div class="pipe">
+        <div class="col"><h5>Новые <span>38</span></h5><div class="deal"><b>ООО «Термекс»</b>1,2 млн ₽</div><div class="deal"><b>СтройЛайн</b>640 тыс ₽</div></div>
+        <div class="col"><h5>КП отправлено <span>41</span></h5><div class="deal"><b>АгроПром</b>3,4 млн ₽</div><div class="deal"><b>Мегалит</b>890 тыс ₽</div></div>
+        <div class="col"><h5>Переговоры <span>36</span></h5><div class="deal"><b>НордТранс</b>2,1 млн ₽</div></div>
+        <div class="col"><h5>Счёт <span>27</span></h5><div class="deal"><b>ВекторЛаб</b>540 тыс ₽</div><div class="deal"><b>Ростехмаш</b>4,8 млн ₽</div></div>
+      </div>
+    </div></div></div>
+</section>
+<div class="logos"><span>ТЕРМЕКС</span><span>ВекторЛаб</span><span>NORDTRANS</span><span>АгроПром</span><span>Мегалит</span></div>
+</div>
+
+<section id="feat"><div class="w">
+  <div class="sh"><h2>Всё, что нужно B2B-продажам</h2><p>Длинные сделки, несколько ЛПР, тендеры и счета — Flowdesk создан для этого.</p></div>
+  <div class="feats">
+    <div class="f"><div class="ic">✉</div><h3>Автозаполнение</h3><p>Письма, звонки и встречи сами попадают в карточку сделки.</p></div>
+    <div class="f"><div class="ic">⇄</div><h3>Интеграция с 1С</h3><p>Счета, оплаты и отгрузки синхронизируются каждые 5 минут.</p></div>
+    <div class="f"><div class="ic">✦</div><h3>AI-подсказки</h3><p>Система напомнит о следующем шаге и подскажет, какая сделка «остывает».</p></div>
+    <div class="f"><div class="ic">◎</div><h3>Карта ЛПР</h3><p>Кто влияет на решение у клиента и с кем вы уже говорили.</p></div>
+    <div class="f"><div class="ic">▤</div><h3>Отчёты для РОПа</h3><p>План-факт, конверсия по этапам и загрузка менеджеров в один клик.</p></div>
+    <div class="f"><div class="ic">⛨</div><h3>152-ФЗ</h3><p>Серверы в России, разграничение прав доступа, журнал действий.</p></div>
+  </div>
+</div></section>
+
+<section class="soft" id="roi"><div class="w">
+  <div class="sh"><h2>Посчитайте выгоду</h2><p>Сколько времени команда вернёт в продажи.</p></div>
+  <div class="roi">
+    <div>
+      <label>Менеджеров в отделе <b id="mv">10</b></label><input type="range" id="m" min="2" max="60" value="10">
+      <label>Часов в день на заполнение CRM <b id="hv">1.5</b></label><input type="range" id="h" min="0.5" max="4" step="0.5" value="1.5">
+      <label>Стоимость часа менеджера, ₽ <b id="cv">600</b></label><input type="range" id="c" min="300" max="2000" step="50" value="600">
+    </div>
+    <div class="res"><small>Экономия в месяц</small><b id="save">0 ₽</b><small id="hrs"></small></div>
+  </div>
+</div></section>
+
+<section id="price"><div class="w" style="text-align:center">
+  <div class="sh"><h2>Прозрачные тарифы</h2><p>Цена за пользователя. Без скрытых платежей.</p></div>
+  <div class="tg" id="tg"><button class="on" data-y="0">Помесячно</button><button data-y="1">За год <em>−20%</em></button></div>
+  <div class="plans" style="text-align:left">
+    <div class="pl"><h3>Старт</h3><div class="pr" data-m="690">690 ₽<small> / польз.</small></div><p style="color:var(--mut)">Для команд до 5 человек</p><ul><li>Воронка и сделки</li><li>Почта и телефония</li><li>Мобильное приложение</li></ul><a class="btn g" href="#demo">Начать</a></div>
+    <div class="pl hot"><h3>Бизнес</h3><div class="pr" data-m="1290">1 290 ₽<small> / польз.</small></div><p style="color:var(--mut)">Для отделов продаж</p><ul><li>Всё из «Старт»</li><li>Интеграция с 1С</li><li>AI-подсказки</li><li>Отчёты для РОПа</li></ul><a class="btn" href="#demo">Попробовать</a></div>
+    <div class="pl"><h3>Корпорация</h3><div class="pr" data-m="0">По запросу</div><p style="color:var(--mut)">От 50 пользователей</p><ul><li>Установка на ваш сервер</li><li>SSO и аудит</li><li>Персональный менеджер</li></ul><a class="btn g" href="#demo">Связаться</a></div>
+  </div>
+</div></section>
+
+<section class="soft" id="faq"><div class="w faq">
+  <div class="sh"><h2>Частые вопросы</h2></div>
+  <details open><summary>Сколько занимает внедрение?</summary><p>Базовая настройка — 1 день, перенос данных из другой CRM — до 3 дней. Мы делаем это сами.</p></details>
+  <details><summary>Где хранятся данные?</summary><p>В дата-центрах в России. Соответствуем 152-ФЗ.</p></details>
+  <details><summary>Можно ли подключить нашу телефонию?</summary><p>Да: Mango Office, UIS, Zadarma, Билайн и ещё 20+ операторов.</p></details>
+  <details><summary>Что будет после пробного периода?</summary><p>Данные сохранятся. Выберите тариф или выгрузите всё в Excel.</p></details>
+</div></section>
+
+<section id="demo"><div class="w">
+  <div class="demo-f">
+    <div><h2>Покажем Flowdesk на ваших данных</h2><p style="opacity:.7;margin-top:12px">30 минут онлайн. Ответим на вопросы и посчитаем стоимость внедрения.</p></div>
+    <form id="df"><input required placeholder="Имя"><input required placeholder="Компания"><input required type="tel" placeholder="Телефон"><select><option>Размер отдела: до 10</option><option>10–50</option><option>50+</option></select><button class="btn">Запросить демо</button><div class="ok" id="ok">Спасибо! Менеджер свяжется с вами в течение часа.</div></form>
+  </div>
+</div></section>
+<footer><div class="w">© 2026 Flowdesk — вымышленный продукт. Демо-проект ProximityAgent: лендинг B2B SaaS.</div></footer>
+<a class="demo" href="../../#cases">← Демо-проект ProximityAgent</a>
+<script>
+const $=id=>document.getElementById(id);
+function roi(){const m=+$("m").value,h=+$("h").value,c=+$("c").value;$("mv").textContent=m;$("hv").textContent=h;$("cv").textContent=c;
+ const hrs=m*h*0.7*21;$("save").textContent=Math.round(hrs*c).toLocaleString("ru-RU")+" ₽";$("hrs").textContent="≈ "+Math.round(hrs)+" часов возвращаются в продажи"}
+["m","h","c"].forEach(i=>$(i).oninput=roi);roi();
+$("tg").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#tg button").forEach(x=>x.classList.toggle("on",x==b));
+ document.querySelectorAll(".pr[data-m]").forEach(p=>{const v=+p.dataset.m;if(!v)return;const n=b.dataset.y=="1"?Math.round(v*.8/10)*10:v;p.innerHTML=n.toLocaleString("ru-RU")+" ₽<small> / польз.</small>"})};
+$("df").onsubmit=e=>{e.preventDefault();$("ok").style.display="block";e.target.querySelector("button").disabled=true};
+</script>
+</body>
+</html>

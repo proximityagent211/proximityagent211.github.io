@@ -293,6 +293,17 @@ $$('#svcTabs button').forEach(b => b.addEventListener('click', () => {
   });
 }));
 
+/* ---------- v9: live demo cases filter ---------- */
+$$('#csTabs button').forEach(b => b.addEventListener('click', () => {
+  $$('#csTabs button').forEach(x => x.classList.toggle('on', x === b));
+  const f = b.dataset.f;
+  $$('#csGrid .cs').forEach(c => {
+    const show = f === 'all' || c.dataset.cat.split(' ').includes(f);
+    c.classList.toggle('hide', !show);
+    if (show) c.classList.add('in');
+  });
+}));
+
 /* ---------- prefill form from services / packages ---------- */
 const prefill = txt => { const t = $('#ft'); if (t && !t.value) t.value = txt; };
 $$('[data-svc]').forEach(c => c.addEventListener('click', () => prefill('Услуга: ' + c.dataset.svc + '. ')));

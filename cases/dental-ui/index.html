@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DentaView — кабинет врача</title>
+<meta name="description" content="Демо-проект ProximityAgent: UI/UX веб-приложения для стоматологов с просмотром снимков и AI-разметкой.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#101828;--mut:#667085;--line:#e4e7ec;--pr:#0e9384;--pr-s:#e6f6f4;--warn:#dc6803;--warn-s:#fef0e6;--bad:#d92d20;--bad-s:#fdeceb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 Inter,system-ui,sans-serif;height:100vh;overflow:hidden}
+.app{display:grid;grid-template-columns:232px 1fr;height:100vh}
+aside{background:var(--card);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+.lg{display:flex;gap:10px;align-items:center;font-weight:700;font-size:17px;padding:0 8px 18px}
+.lg i{width:30px;height:30px;border-radius:9px;background:var(--pr);display:grid;place-items:center;color:#fff;font-style:normal}
+.nv{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;color:var(--mut);cursor:pointer;font-weight:500}
+.nv.on{background:var(--pr-s);color:var(--pr)}
+.nv b{margin-left:auto;background:var(--pr);color:#fff;font-size:11px;border-radius:10px;padding:0 7px}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;border-top:1px solid var(--line);padding:14px 8px 0}
+.av{width:34px;height:34px;border-radius:50%;background:#d0e9e6;display:grid;place-items:center;font-weight:600;color:var(--pr)}
+.me small{display:block;color:var(--mut)}
+main{display:grid;grid-template-columns:300px 1fr;overflow:hidden}
+.list{border-right:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;overflow:hidden}
+.lh{padding:18px 16px 12px}
+.lh h2{font-size:18px}
+.search{margin-top:10px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--mut)}
+.search input{border:0;outline:0;font:inherit;flex:1;background:none}
+.tabs{display:flex;gap:4px;padding:0 16px 10px}
+.tabs span{white-space:nowrap;font-size:11.5px;padding:4px 10px;border-radius:20px;background:var(--bg);color:var(--mut);cursor:pointer}
+.tabs span.on{background:var(--ink);color:#fff}
+.pts{overflow:auto;flex:1}
+.pt{padding:12px 16px;border-top:1px solid var(--line);cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px}
+.pt:hover{background:#fafbfc}.pt.on{background:var(--pr-s);box-shadow:inset 3px 0 0 var(--pr)}
+.pt b{font-weight:600}.pt small{color:var(--mut)}
+.st{font-size:11px;font-weight:600;border-radius:20px;padding:2px 8px;align-self:start}
+.st.ok{background:var(--pr-s);color:var(--pr)}.st.wait{background:var(--warn-s);color:var(--warn)}.st.new{background:#eef4ff;color:#3538cd}
+.view{display:flex;flex-direction:column;overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--card);gap:12px;flex-wrap:wrap}
+.top h1{font-size:20px}.top small{color:var(--mut)}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:9px 14px;font:600 13px Inter;cursor:pointer;color:var(--ink)}
+.btn.p{background:var(--pr);border-color:var(--pr);color:#fff}
+.body{display:grid;grid-template-columns:1fr 300px;gap:16px;padding:18px 22px;overflow:auto;flex:1}
+.scan{background:#0c1116;border-radius:14px;position:relative;min-height:380px;overflow:hidden;display:flex;flex-direction:column}
+.tools{display:flex;gap:6px;padding:10px;border-bottom:1px solid #1d2630}
+.tools span{color:#9fb0c0;font-size:12px;padding:5px 10px;border-radius:6px;background:#141b22;cursor:pointer}
+.tools span.on{background:#1f3b38;color:#5fe0cf}
+.tools .sp{margin-left:auto}
+.scan svg{flex:1;width:100%}
+.mk{cursor:pointer;transition:opacity .2s}
+.scan.hide .mk{opacity:0}
+.legend{position:absolute;left:12px;bottom:12px;display:flex;gap:10px;font-size:11px;color:#9fb0c0}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
+.panel{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.card h3{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.fd{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line);cursor:pointer}
+.fd:first-of-type{border-top:0}
+.fd.sel{background:var(--bg);margin:0 -8px;padding:9px 8px;border-radius:8px}
+.dot{width:10px;height:10px;border-radius:3px;margin-top:5px;flex:none}
+.fd b{display:block;font-weight:600}.fd small{color:var(--mut)}
+.conf{margin-left:auto;font-size:12px;font-weight:600;color:var(--mut)}
+.ok-row{display:flex;gap:8px;margin-top:10px}
+.ok-row .btn{flex:1;padding:7px}
+.steps{display:flex;gap:6px}
+.steps div{flex:1;text-align:center;font-size:11px;color:var(--mut)}
+.steps i{display:block;height:4px;border-radius:4px;background:var(--line);margin-bottom:6px}
+.steps .d i{background:var(--pr)}
+.toast{position:fixed;right:24px;bottom:70px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;opacity:0;transform:translateY(10px);transition:.25s}
+.toast.on{opacity:1;transform:none}
+.demo{position:fixed;right:16px;bottom:16px;z-index:60;background:#101828;color:#fff;font:500 12px/1 Inter,sans-serif;padding:10px 14px;border-radius:30px;text-decoration:none;opacity:.9}
+@media(max-width:1100px){.app{grid-template-columns:1fr}aside{display:none}body{overflow:auto;height:auto}main{grid-template-columns:1fr}.list{max-height:300px}.body{grid-template-columns:1fr}.app,main,.view{height:auto;overflow:visible}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="lg"><i>✚</i>DentaView</div>
+  <div class="nv">◷ Сегодня</div>
+  <div class="nv on">▣ Снимки КЛКТ <b>4</b></div>
+  <div class="nv">☺ Пациенты</div>
+  <div class="nv">▤ Отчёты</div>
+  <div class="nv">⚙ Настройки</div>
+  <div class="me"><div class="av">ИК</div><div><b>Ирина Ковалёва</b><small>Стоматолог-терапевт</small></div></div>
+</aside>
+<main>
+  <section class="list">
+    <div class="lh"><h2>Снимки</h2><label class="search">⌕<input id="q" placeholder="Поиск пациента"></label></div>
+    <div class="tabs" id="tabs"><span class="on" data-s="all">Все</span><span data-s="new">Новые</span><span data-s="wait">На проверке</span><span data-s="ok">Готово</span></div>
+    <div class="pts" id="pts"></div>
+  </section>
+  <section class="view">
+    <div class="top"><div><h1 id="pn">—</h1><small id="pm"></small></div>
+      <div style="display:flex;gap:8px"><button class="btn" id="tog">Скрыть разметку</button><button class="btn p" id="pdf">Скачать отчёт PDF</button></div></div>
+    <div class="body">
+      <div class="scan" id="scan">
+        <div class="tools"><span class="on">Панорама</span><span>Аксиальный</span><span>3D</span><span class="sp">− 100% +</span></div>
+        <svg viewBox="0 0 640 330" id="svg"></svg>
+        <div class="legend"><span><i style="background:#f97066"></i>Кариес</span><span><i style="background:#fdb022"></i>Периапикальное</span><span><i style="background:#5fe0cf"></i>Пломба</span></div>
+      </div>
+      <div class="panel">
+        <div class="card"><h3>Статус анализа</h3><div class="steps"><div class="d"><i></i>Загружен</div><div class="d"><i></i>AI-разметка</div><div id="s3"><i></i>Проверка врача</div><div id="s4"><i></i>Отчёт</div></div></div>
+        <div class="card"><h3>Находки AI</h3><div id="fds"></div>
+          <div class="ok-row"><button class="btn" id="rej">Исправить</button><button class="btn p" id="acc">Подтвердить всё</button></div></div>
+        <div class="card"><h3>Комментарий врача</h3><textarea style="width:100%;min-height:70px;border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;resize:vertical" placeholder="Например: рекомендовано лечение 36 зуба"></textarea></div>
+      </div>
+    </div>
+  </section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<a class="demo" href="../../#cases">← Демо-проект ProximityAgent</a>
+<script>
+const PTS=[
+ {n:"Смирнов Алексей",a:"42 года · КЛКТ от 15.11",s:"new",f:[["Кариес","Зуб 36, дистальная поверхность",94,"#f97066",430,190],["Периапикальное изменение","Зуб 46, корень",81,"#fdb022",470,265],["Пломба","Зуб 24",99,"#5fe0cf",250,170]]},
+ {n:"Орлова Мария",a:"29 лет · КЛКТ от 15.11",s:"wait",f:[["Кариес","Зуб 15, окклюзионная",88,"#f97066",215,165],["Пломба","Зуб 37",97,"#5fe0cf",455,255]]},
+ {n:"Петров Дмитрий",a:"55 лет · КЛКТ от 14.11",s:"ok",f:[["Пломба","Зуб 26",98,"#5fe0cf",380,170]]},
+ {n:"Гусева Анна",a:"37 лет · КЛКТ от 14.11",s:"new",f:[["Кариес","Зуб 47",90,"#f97066",500,255],["Кариес","Зуб 12",76,"#f97066",290,160]]},
+ {n:"Ким Сергей",a:"61 год · КЛКТ от 13.11",s:"ok",f:[["Периапикальное изменение","Зуб 21",85,"#fdb022",330,160]]}];
+const SL={new:"Новый",wait:"На проверке",ok:"Готово"};let cur=0,flt="all",sel=-1;
+const $=id=>document.getElementById(id);
+function teeth(){let g='<rect width="640" height="330" fill="#0c1116"/><ellipse cx="320" cy="200" rx="290" ry="150" fill="url(#bone)"/><defs><radialGradient id="bone"><stop offset="0" stop-color="#3a4752"/><stop offset="1" stop-color="#0c1116"/></radialGradient></defs>';
+ for(let i=0;i<16;i++){const x=95+i*30,y=165-Math.sin(i/15*Math.PI)*28;g+=`<path d="M${x-11} ${y} q11 -26 22 0 l-3 -40 q-8 -6 -16 0z" fill="#c9d3dc" opacity=".85"/>`;
+  const y2=245+Math.sin(i/15*Math.PI)*22;g+=`<path d="M${x-11} ${y2} q11 26 22 0 l-3 40 q-8 6 -16 0z" fill="#c9d3dc" opacity=".85"/>`}
+ return g}
+function drawList(){const q=$("q").value.toLowerCase();$("pts").innerHTML=PTS.map((p,i)=>({p,i})).filter(({p})=>(flt=="all"||p.s==flt)&&p.n.toLowerCase().includes(q)).map(({p,i})=>`<div class="pt ${i==cur?"on":""}" data-i="${i}"><b>${p.n}</b><span class="st ${p.s}">${SL[p.s]}</span><small>${p.a}</small><small>${p.f.length} наход.</small></div>`).join("")||'<p style="padding:16px;color:var(--mut)">Ничего не найдено</p>'}
+function show(){const p=PTS[cur];$("pn").textContent=p.n;$("pm").textContent=p.a;
+ $("svg").innerHTML=teeth()+p.f.map((f,j)=>`<g class="mk" data-j="${j}"><rect x="${f[4]-18}" y="${f[5]-18}" width="36" height="36" rx="6" fill="none" stroke="${f[3]}" stroke-width="${j==sel?3:2}" ${j==sel?'':'stroke-dasharray="4 3"'}/><text x="${f[4]-18}" y="${f[5]-24}" fill="${f[3]}" font-size="11" font-family="Inter">${f[2]}%</text></g>`).join("");
+ $("fds").innerHTML=p.f.map((f,j)=>`<div class="fd ${j==sel?"sel":""}" data-j="${j}"><span class="dot" style="background:${f[3]}"></span><div><b>${f[0]}</b><small>${f[1]}</small></div><span class="conf">${f[2]}%</span></div>`).join("");
+ $("s3").className=p.s=="ok"?"d":"";$("s4").className=p.s=="ok"?"d":""}
+const toast=t=>{$("toast").textContent=t;$("toast").classList.add("on");setTimeout(()=>$("toast").classList.remove("on"),1800)};
+$("pts").onclick=e=>{const r=e.target.closest(".pt");if(!r)return;cur=+r.dataset.i;sel=-1;drawList();show()};
+$("tabs").onclick=e=>{const t=e.target.closest("span");if(!t)return;document.querySelectorAll("#tabs span").forEach(x=>x.classList.toggle("on",x==t));flt=t.dataset.s;drawList()};
+$("q").oninput=drawList;
+$("fds").onclick=$("svg").onclick=e=>{const r=e.target.closest("[data-j]");if(!r)return;sel=+r.dataset.j;show()};
+$("tog").onclick=()=>{$("scan").classList.toggle("hide");$("tog").textContent=$("scan").classList.contains("hide")?"Показать разметку":"Скрыть разметку"};
+$("acc").onclick=()=>{PTS[cur].s="ok";drawList();show();toast("Находки подтверждены — отчёт готов")};
+$("rej").onclick=()=>{PTS[cur].s="wait";drawList();show();toast("Отправлено на доработку разметки")};
+$("pdf").onclick=()=>toast(PTS[cur].s=="ok"?"Демо: здесь скачается PDF-отчёт":"Сначала подтвердите находки");
+drawList();show();
+</script>
+</body>
+</html>

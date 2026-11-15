@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Инфографика для Wildberries и Ozon</title>
+<meta name="description" content="Демо-проект ProximityAgent: инфографика для карточек товаров на маркетплейсах.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ececf1;font:15px/1.5 Montserrat,system-ui,sans-serif;color:#1d1d26;overflow-x:hidden}
+.w{max-width:1200px;margin:0 auto;padding:40px 20px 90px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.head h1{font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.head p{color:#6b6b7b;max-width:460px;margin-top:8px}
+.tabs{display:flex;background:#fff;border-radius:14px;padding:4px;gap:4px}
+.tabs button{border:0;background:none;padding:10px 16px;border-radius:10px;font:700 13px Montserrat;cursor:pointer;color:#6b6b7b}
+.tabs button.on{background:#cb11ab;color:#fff}
+.tabs button.oz.on{background:#005bff}
+.set{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{aspect-ratio:3/4;border-radius:12px;overflow:hidden;position:relative;container-type:inline-size;box-shadow:0 10px 30px rgba(0,0,0,.08);background:#fff}
+.lab{text-align:center;font-size:12px;color:#6b6b7b;margin-top:8px;font-weight:600}
+/* product 1: thermos */
+.c1{background:linear-gradient(160deg,#1c2b3a,#0e1620);color:#fff}
+.c1 h2{position:absolute;left:7cqw;top:7cqw;font-size:11cqw;font-weight:900;line-height:.95;letter-spacing:-.02em}
+.c1 h2 span{color:#ffb547}
+.badge{position:absolute;right:6cqw;top:6cqw;width:22cqw;height:22cqw;border-radius:50%;background:#ffb547;color:#1c2b3a;display:grid;place-items:center;text-align:center;font-weight:900;font-size:7cqw;line-height:.9}
+.badge small{font-size:3.2cqw;font-weight:700;display:block}
+.thermo{position:absolute;right:7cqw;bottom:-4cqw;width:34cqw}
+.ft{position:absolute;z-index:2;display:flex;align-items:center;gap:2cqw;font-weight:700;font-size:4cqw;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:3cqw;padding:2cqw 3cqw}
+.ft i{font-style:normal;font-size:5.5cqw}
+/* product 2: sizes */
+.c2{background:#f6f4f0}
+.c2 h3{position:absolute;left:7cqw;top:7cqw;font-size:8cqw;font-weight:900;line-height:1}
+.dim{position:absolute;font-weight:800;font-size:5cqw;color:#cb11ab}
+.c2 .note{position:absolute;left:7cqw;right:7cqw;bottom:6cqw;background:#fff;border-radius:3cqw;padding:3cqw;font-size:3.6cqw;font-weight:600;display:flex;justify-content:space-between}
+/* product 3: compare */
+.c3{background:#fff}
+.c3 h3{font-size:8cqw;font-weight:900;padding:7cqw 7cqw 3cqw;line-height:1}
+.cmp{display:grid;grid-template-columns:1fr 1fr;margin:0 5cqw;gap:3cqw}
+.cmp div{border-radius:3cqw;padding:3cqw;font-size:3.6cqw;font-weight:600}
+.cmp .us{background:#ecfbe9}.cmp .them{background:#f4f4f6;color:#8b8b98}
+.cmp b{display:block;font-size:4.4cqw;margin-bottom:2cqw;font-weight:800;color:#1d1d26}
+.cmp p{padding:1.4cqw 0;border-bottom:1px dashed rgba(0,0,0,.1)}
+.c3 .stars{position:absolute;left:0;right:0;bottom:6cqw;text-align:center;font-weight:800;font-size:5cqw}
+.c3 .stars span{color:#ffb547}
+/* product 4: set */
+.c4{background:linear-gradient(180deg,#ffe9f6,#fff)}
+.c4 h3{position:absolute;left:0;right:0;top:7cqw;text-align:center;font-size:8.5cqw;font-weight:900;line-height:1}
+.c4 h3 small{display:block;font-size:4cqw;font-weight:600;color:#6b6b7b;margin-top:2cqw}
+.items{position:absolute;left:6cqw;right:6cqw;top:34cqw;display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.items div{background:#fff;border-radius:3cqw;padding:3cqw;text-align:center;font-size:3.4cqw;font-weight:700;box-shadow:0 2px 10px rgba(203,17,171,.08)}
+.items svg{width:16cqw;height:16cqw;display:block;margin:0 auto 1cqw}
+.oz .c1 .badge,.ozm .badge{background:#005bff;color:#fff}
+.ozm .dim{color:#005bff}
+.ozm .c4{background:linear-gradient(180deg,#e6efff,#fff)}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.tips div{background:#fff;border-radius:16px;padding:22px}
+.tips b{display:block;font-size:16px;margin-bottom:6px}
+.tips p{color:#6b6b7b;font-size:14px}
+.demo{position:fixed;left:16px;bottom:16px;z-index:60;background:#1d1d26;color:#fff;font:600 12px/1 Montserrat,sans-serif;padding:10px 14px;border-radius:30px;text-decoration:none}
+@media(max-width:900px){.set{grid-template-columns:1fr 1fr}.tips{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="w">
+  <div class="head"><div><h1>Инфографика для карточек товаров</h1><p>Комплект из 4 слайдов для термокружки: обложка, размеры, сравнение и комплектация. Стиль адаптируется под площадку.</p></div>
+  <div class="tabs" id="tabs"><button class="on" data-m="wb">Wildberries</button><button class="oz" data-m="oz">Ozon</button></div></div>
+  <div class="set" id="set">
+    <div><div class="card c1">
+      <h2>ТЕРМО<br>КРУЖКА<br><span>450 мл</span></h2>
+      <div class="badge"><div>12ч<small>держит тепло</small></div></div>
+      <div class="ft" style="left:6cqw;top:52cqw"><i>☕</i>Не протекает</div>
+      <div class="ft" style="left:6cqw;top:71cqw"><i>❄</i>Холод 24 ч</div>
+      <div class="ft" style="left:6cqw;top:90cqw"><i>🛡</i>Сталь 304</div>
+      <svg class="thermo" viewBox="0 0 100 200"><defs><linearGradient id="m" x1="0" x2="1"><stop offset="0" stop-color="#8fa3b8"/><stop offset=".45" stop-color="#e8eef4"/><stop offset="1" stop-color="#5f7488"/></linearGradient></defs><rect x="14" y="20" width="72" height="180" rx="14" fill="url(#m)"/><rect x="10" y="4" width="80" height="26" rx="8" fill="#22303e"/><rect x="40" y="0" width="20" height="8" rx="3" fill="#ffb547"/><rect x="14" y="70" width="72" height="40" fill="#ffb547" opacity=".9"/></svg>
+    </div><div class="lab">1 · Обложка</div></div>
+
+    <div><div class="card c2">
+      <h3>Размеры</h3>
+      <svg viewBox="0 0 100 133" style="position:absolute;inset:0;width:100%;height:100%"><rect x="38" y="30" width="26" height="70" rx="5" fill="#cfd8e1"/><rect x="36" y="25" width="30" height="9" rx="3" fill="#22303e"/><path d="M72 25v75M70 25h4M70 100h4" stroke="currentColor" stroke-width=".6" style="color:#cb11ab" class="ln"/><path d="M36 106h30M36 104v4M66 104v4" stroke="#cb11ab" stroke-width=".6" class="ln"/></svg>
+      <div class="dim" style="left:76%;top:45%">21 см</div>
+      <div class="dim" style="left:40%;top:82%">7,5 см</div>
+      <div class="note"><span>Объём 450 мл</span><span>Вес 290 г</span></div>
+    </div><div class="lab">2 · Размеры</div></div>
+
+    <div><div class="card c3">
+      <h3>Почему<br>выбирают нас</h3>
+      <div class="cmp"><div class="us"><b>Наша</b><p>✓ 12 ч тепла</p><p>✓ Сталь 304</p><p>✓ Замок от протечек</p><p>✓ Гарантия 1 год</p></div><div class="them"><b>Обычная</b><p>✕ 3–4 часа</p><p>✕ Сталь 201</p><p>✕ Протекает</p><p>✕ Без гарантии</p></div></div>
+      <div class="stars"><span>★★★★★</span> 4,9 · 2 300 отзывов</div>
+    </div><div class="lab">3 · Сравнение</div></div>
+
+    <div><div class="card c4">
+      <h3>В комплекте<small>готово к подарку</small></h3>
+      <div class="items">
+        <div><svg viewBox="0 0 40 40"><rect x="12" y="6" width="16" height="30" rx="4" fill="#cfd8e1"/><rect x="11" y="3" width="18" height="6" rx="2" fill="#22303e"/></svg>Термокружка</div>
+        <div><svg viewBox="0 0 40 40"><path d="M8 30h24M14 30V14h12v16M20 14V6" stroke="#22303e" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>Ершик</div>
+        <div><svg viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="22" rx="3" fill="#ffb547"/><path d="M6 16h28M20 10v22" stroke="#fff" stroke-width="2"/></svg>Подарочная коробка</div>
+        <div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="none" stroke="#22303e" stroke-width="2.5"/><circle cx="20" cy="20" r="5" fill="#cb11ab" class="ring"/></svg>2 запасных кольца</div>
+      </div>
+    </div><div class="lab">4 · Комплектация</div></div>
+  </div>
+
+  <div class="tips"><div><b>Требования площадок</b><p>3:4, 900×1200 px, без цен и контактов на изображении, читаемо с телефона.</p></div><div><b>Главное — на обложке</b><p>Покупатель решает за 1–2 секунды: название, ключевая выгода и крупный товар.</p></div><div><b>Пакет слайдов</b><p>Обычно 5–8 изображений: обложка, выгоды, размеры, состав, сравнение, комплект.</p></div></div>
+</div>
+<a class="demo" href="../../#cases">← Демо-проект ProximityAgent</a>
+<script>
+const set=document.getElementById("set");
+document.getElementById("tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x==b));
+ const oz=b.dataset.m=="oz";set.classList.toggle("ozm",oz);document.querySelectorAll(".ln").forEach(l=>l.setAttribute("stroke",oz?"#005bff":"#cb11ab"));document.querySelector(".ring").setAttribute("fill",oz?"#005bff":"#cb11ab")};
+</script>
+</body>
+</html>

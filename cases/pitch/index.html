@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreenRoute — презентация для инвесторов</title>
+<meta name="description" content="Демо-проект ProximityAgent: питч-презентация стартапа, 7 слайдов.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0f3d2e;--lime:#b9f26b;--cream:#f5f1e8;--ink:#10201a;--mut:#5e6f67}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#1d1f1e;font:16px/1.5 Manrope,system-ui,sans-serif;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;overflow:hidden}
+.stage{width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;position:relative;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);container-type:inline-size}
+.s{position:absolute;inset:0;padding:6cqw 7cqw;opacity:0;transform:translateX(3%);transition:.5s cubic-bezier(.2,.8,.2,1);pointer-events:none;display:flex;flex-direction:column}
+.s.on{opacity:1;transform:none;pointer-events:auto}
+.s.prev{transform:translateX(-3%)}
+.dk{background:var(--g);color:var(--cream)}.lt{background:var(--cream)}
+.k{font-size:1.3cqw;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mut);margin-bottom:1.6cqw}
+.dk .k{color:var(--lime)}
+h1{font-size:7cqw;line-height:.95;font-weight:800;letter-spacing:-.04em}
+h2{font-size:4cqw;line-height:1.05;font-weight:800;letter-spacing:-.03em;max-width:70%}
+p.l{font-size:1.9cqw;color:var(--mut);max-width:55%;margin-top:2cqw}
+.dk p.l{color:#b8c9bf}
+.foot{margin-top:auto;display:flex;justify-content:space-between;font-size:1.2cqw;color:var(--mut)}
+.dk .foot{color:#8fa79a}
+.lg{display:flex;align-items:center;gap:.8cqw;font-weight:800;font-size:1.8cqw}
+.lg i{width:2.2cqw;height:2.2cqw;border-radius:50%;background:var(--lime);display:block}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:auto}
+.box{background:#fff;border-radius:1.4cqw;padding:2.2cqw}
+.dk .box{background:rgba(255,255,255,.07)}
+.box b{display:block;font-size:4cqw;font-weight:800;letter-spacing:-.03em;line-height:1}
+.box span{font-size:1.4cqw;color:var(--mut)}.dk .box span{color:#b8c9bf}
+.big{font-size:16cqw;font-weight:800;color:var(--lime);letter-spacing:-.06em;line-height:.85;position:absolute;right:6cqw;bottom:5cqw}
+.mkt{display:flex;align-items:center;gap:4cqw;margin-top:auto}
+.mkt svg{width:26cqw}
+.mkt div p{font-size:1.5cqw;margin-bottom:1.2cqw}.mkt b{font-size:2.6cqw}
+.bars{display:flex;align-items:flex-end;gap:2cqw;height:20cqw;margin-top:auto;border-bottom:2px solid #d8d2c4;padding:0 1cqw}
+.bars div{flex:1;background:var(--g);border-radius:.8cqw .8cqw 0 0;position:relative;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.bars div:last-child{background:var(--lime)}
+.bars span{position:absolute;top:-2.4cqw;left:0;right:0;text-align:center;font-weight:700;font-size:1.4cqw}
+.bars em{position:absolute;bottom:-2.6cqw;left:0;right:0;text-align:center;font-style:normal;font-size:1.3cqw;color:var(--mut)}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw;margin-top:auto}
+.team .av{aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#cfe8b0,#6da35a);margin-bottom:1cqw}
+.team b{font-size:1.6cqw;display:block}.team span{font-size:1.25cqw;color:var(--mut)}
+.ask{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;margin-top:auto;align-items:end}
+.ask .sum{font-size:9cqw;font-weight:800;color:var(--lime);letter-spacing:-.05em;line-height:.9}
+.use div{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.15);padding:1cqw 0;font-size:1.6cqw}
+.ctl{display:flex;gap:14px;align-items:center;color:#c9cfcc;font:500 14px Manrope}
+.ctl button{width:42px;height:42px;border-radius:50%;border:1px solid #444;background:#2a2d2b;color:#fff;font-size:18px;cursor:pointer}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#444;cursor:pointer}.dots i.on{background:var(--lime);width:22px;border-radius:5px}
+.demo{position:fixed;left:16px;bottom:16px;z-index:60;background:var(--lime);color:#000;font:700 12px/1 Manrope,sans-serif;padding:10px 14px;border-radius:30px;text-decoration:none}
+@media(max-width:700px){.demo{top:12px;bottom:auto}}
+</style>
+</head>
+<body>
+<div class="stage" id="st">
+  <section class="s dk on"><svg viewBox="0 0 400 400" style="position:absolute;right:5cqw;top:50%;transform:translateY(-50%);width:36cqw;opacity:.95"><g stroke="#24584a" stroke-width="1"><path d="M0 80H400M0 160H400M0 240H400M0 320H400M80 0V400M160 0V400M240 0V400M320 0V400"/></g><path d="M40 340 C90 300 70 230 130 220 S200 260 230 190 S300 110 360 60" fill="none" stroke="#b9f26b" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 0"/><path d="M40 340 L120 300 L90 200 L200 240 L170 120 L300 160 L360 60" fill="none" stroke="#5e8f7c" stroke-width="2" stroke-dasharray="6 7"/><g fill="#f5f1e8"><circle cx="40" cy="340" r="9"/><circle cx="130" cy="220" r="7"/><circle cx="230" cy="190" r="7"/><circle cx="360" cy="60" r="11" fill="#b9f26b"/></g><text x="250" y="320" fill="#b9f26b" font-family="Manrope" font-weight="800" font-size="34">−27%</text><text x="250" y="345" fill="#8fa79a" font-family="Manrope" font-size="14">пробега</text></svg><div class="lg"><i></i>GreenRoute</div><div style="margin:auto 0"><div class="k">Seed-раунд · 2026</div><h1>Доставка<br>без пустых<br>километров</h1><p class="l">AI-маршрутизация для курьерских служб: −27% пробега и топлива с первого месяца.</p></div><div class="foot"><span>Презентация для инвесторов</span><span>01 / 07</span></div></section>
+  <section class="s lt"><div class="k">Проблема</div><h2>Курьеры проезжают лишние 30% пути</h2><p class="l">Маршруты строят вручную в Excel или по шаблону. Пробки, окна доставки и возвраты не учитываются.</p><div class="three"><div class="box"><b>30%</b><span>пробега — лишние километры</span></div><div class="box"><b>2 ч</b><span>в день логист тратит на маршруты</span></div><div class="box"><b>18%</b><span>заказов доставляют с опозданием</span></div></div><div class="foot" style="margin-top:2cqw"><span>GreenRoute</span><span>02 / 07</span></div></section>
+  <section class="s dk"><div class="k">Решение</div><h2>Маршрут за 40 секунд вместо двух часов</h2><p class="l">Загружаете заказы — алгоритм учитывает пробки, окна, вес и смены курьеров. Курьер получает маршрут в приложении.</p><div class="big">40с</div><div class="foot"><span>GreenRoute</span><span>03 / 07</span></div></section>
+  <section class="s lt"><div class="k">Рынок</div><h2>Последняя миля в России растёт на 22% в год</h2><div class="mkt"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#e6efd9"/><circle cx="100" cy="120" r="62" fill="#b9f26b"/><circle cx="100" cy="148" r="30" fill="#0f3d2e"/></svg><div><p><b>410 млрд ₽</b><br>TAM — рынок доставки последней мили</p><p><b>62 млрд ₽</b><br>SAM — компании с собственным автопарком</p><p><b>3,1 млрд ₽</b><br>SOM — цель на 2029 год</p></div></div><div class="foot" style="margin-top:2cqw"><span>GreenRoute</span><span>04 / 07</span></div></section>
+  <section class="s lt"><div class="k">Трекшн</div><h2>MRR растёт на 31% в месяц</h2><div class="bars" id="bars"><div data-h="18"><span>0,4</span><em>июн</em></div><div data-h="26"><span>0,6</span><em>июл</em></div><div data-h="38"><span>0,9</span><em>авг</em></div><div data-h="52"><span>1,2</span><em>сен</em></div><div data-h="70"><span>1,6</span><em>окт</em></div><div data-h="92"><span>2,1</span><em>ноя</em></div></div><div class="foot" style="margin-top:4cqw"><span>MRR, млн ₽ · 46 клиентов</span><span>05 / 07</span></div></section>
+  <section class="s lt"><div class="k">Команда</div><h2>Сделали логистику для крупнейшего e-com</h2><div class="team"><div><div class="av"></div><b>Анна В.</b><span>CEO, ex-логистика маркетплейса</span></div><div><div class="av" style="background:linear-gradient(135deg,#b9f26b,#0f3d2e)"></div><b>Илья Р.</b><span>CTO, 10 лет в ML</span></div><div><div class="av" style="background:linear-gradient(135deg,#e6efd9,#8fb87a)"></div><b>Олег Т.</b><span>Продажи B2B</span></div><div><div class="av" style="background:linear-gradient(135deg,#d7e6c3,#3c7a52)"></div><b>Мария Л.</b><span>Продукт и UX</span></div></div><div class="foot" style="margin-top:2cqw"><span>GreenRoute</span><span>06 / 07</span></div></section>
+  <section class="s dk"><div class="k">Раунд</div><h2>Привлекаем на выход в 5 городов</h2><div class="ask"><div><div class="sum">60 млн ₽</div><p style="color:#b8c9bf;font-size:1.6cqw;margin-top:1cqw">Seed · 18 месяцев runway</p></div><div class="use"><div><span>Разработка и ML</span><b>45%</b></div><div><span>Продажи и маркетинг</span><b>35%</b></div><div><span>Команда внедрения</span><b>15%</b></div><div><span>Резерв</span><b>5%</b></div></div></div><div class="foot" style="margin-top:3cqw"><span>anna@greenroute.example</span><span>07 / 07</span></div></section>
+</div>
+<div class="ctl"><button id="pv" aria-label="Назад">←</button><div class="dots" id="dots"></div><button id="nx" aria-label="Вперёд">→</button><span>← → или свайп</span></div>
+<a class="demo" href="../../#cases">← Демо-проект ProximityAgent</a>
+<script>
+const S=[...document.querySelectorAll(".s")];let i=0;
+const dots=document.getElementById("dots");S.forEach((_,k)=>{const d=document.createElement("i");d.onclick=()=>go(k);dots.appendChild(d)});
+function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>{s.classList.toggle("on",k==i);s.classList.toggle("prev",k<i)});[...dots.children].forEach((d,k)=>d.classList.toggle("on",k==i));
+ document.querySelectorAll("#bars div").forEach(b=>b.style.height=S[i].contains(b)?b.dataset.h+"%":"0")}
+document.getElementById("pv").onclick=()=>go(i-1);document.getElementById("nx").onclick=()=>go(i+1);
+addEventListener("keydown",e=>{if(e.key=="ArrowRight"||e.key==" ")go(i+1);if(e.key=="ArrowLeft")go(i-1)});
+let x0=null;st.addEventListener("pointerdown",e=>x0=e.clientX);addEventListener("pointerup",e=>{if(x0===null)return;const d=e.clientX-x0;x0=null;if(Math.abs(d)>40)go(i+(d<0?1:-1));else if(e.target.closest(".stage"))go(i+1)});
+go(0);
+</script>
+</body>
+</html>

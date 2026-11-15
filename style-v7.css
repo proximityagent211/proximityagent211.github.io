@@ -124,3 +124,23 @@ footer .wrap{color:var(--muted)}
   .f-cols{gap:30px}
 }
 @media (prefers-reduced-motion:reduce){.grain,.rays{animation:none}}
+
+/* ---------- v9: live demo cases ---------- */
+.cs-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:90px 0 28px}
+.cs-head h3{font-family:var(--fh);font-weight:500;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.01em}
+.cs-head p{color:var(--muted);max-width:480px;margin-top:8px}
+.cs-head .svc-tabs{margin:0}
+.cs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.cs{display:block;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;background:#070707;transition:border-color .4s var(--ease),transform .5s var(--ease),opacity 1s var(--ease)}
+.cs:hover{border-color:#fff;transform:translateY(-4px)}
+.cs-img{aspect-ratio:4/3;overflow:hidden;background:#111;position:relative}
+.cs-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 1.2s var(--ease)}
+.cs:hover .cs-img img{transform:scale(1.04)}
+.cs-img:after{content:"Открыть демо ↗";position:absolute;right:14px;bottom:14px;background:#fff;color:#000;font:600 13px var(--fb);padding:8px 14px;border-radius:100px;opacity:0;transform:translateY(8px);transition:.35s var(--ease)}
+.cs:hover .cs-img:after{opacity:1;transform:none}
+.cs-t{padding:20px 22px 24px}
+.cs-t span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cs-t h4{font-family:var(--fh);font-weight:500;font-size:19px;margin:8px 0 6px;letter-spacing:-.01em}
+.cs-t p{color:var(--muted);font-size:15px}
+.cs.hide{display:none}
+@media(max-width:760px){.cs-grid{grid-template-columns:1fr}.cs-head{margin-top:70px}.cs-img:after{opacity:1;transform:none}}

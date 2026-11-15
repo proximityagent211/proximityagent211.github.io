@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vektra Pay — брендбук</title>
+<meta name="description" content="Демо-проект ProximityAgent: айдентика и брендбук FinTech-сервиса.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d12;--card:#12151c;--line:#232835;--ink:#eef1f7;--mut:#8a93a6;--lime:#c8ff3d;--violet:#6c5cff;--sky:#3dd6ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 "Space Grotesk",system-ui,sans-serif;overflow-x:hidden}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.mono{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mut);letter-spacing:.04em}
+header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.lg{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+.mark{width:34px;height:34px}
+nav{display:flex;gap:6px}
+nav a{color:var(--mut);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:20px;border:1px solid transparent}
+nav a:hover{border-color:var(--line);color:var(--ink)}
+.cover{padding:90px 0 70px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.cover h1{font-size:clamp(46px,7vw,92px);line-height:.95;letter-spacing:-.03em}
+.cover h1 span{color:var(--lime)}
+.cover p{color:var(--mut);max-width:440px;margin-top:20px;font-size:17px}
+.big-mark{aspect-ratio:1;border-radius:32px;background:radial-gradient(circle at 30% 20%,#1c2030,#0b0d12 70%);border:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden}
+.big-mark svg{width:56%}
+.big-mark .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px;opacity:.35}
+section{padding:70px 0;border-top:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:220px 1fr;gap:30px;margin-bottom:34px}
+.sh h2{font-size:34px;letter-spacing:-.02em;line-height:1.1}
+.sh p{color:var(--mut);max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.c.lt{background:#eef1f7;color:#0b0d12}
+.c.lm{background:var(--lime);color:#0b0d12}
+.c svg{width:64px}
+.constr{position:relative;aspect-ratio:16/7;background:var(--card);border:1px solid var(--line);border-radius:20px;display:grid;place-items:center;overflow:hidden}
+.constr svg{height:78%}
+.sw{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:12px}
+.sw div{border-radius:18px;height:200px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:transform .2s;border:1px solid var(--line)}
+.sw div:hover{transform:translateY(-4px)}
+.sw b{font-size:15px}.sw small{font-family:"JetBrains Mono",monospace;font-size:11px;opacity:.75}
+.type{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.type .c{min-height:260px}
+.aa{font-size:110px;line-height:1;font-weight:600;letter-spacing:-.04em}
+.scale div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding:10px 0}
+.ui{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start}
+.phone{background:#000;border:1px solid var(--line);border-radius:36px;padding:14px;aspect-ratio:9/18.5}
+.scr{background:var(--bg);border-radius:26px;height:100%;padding:18px 14px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.bal{background:linear-gradient(135deg,var(--violet),#3a2fd0);border-radius:18px;padding:16px}
+.bal small{opacity:.8;font-size:11px}.bal b{display:block;font-size:26px;letter-spacing:-.02em}
+.acts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;font-size:10px;color:var(--mut)}
+.acts i{display:grid;place-items:center;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);margin-bottom:4px;font-style:normal;color:var(--lime);font-size:16px}
+.tx{display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.tx em{font-style:normal;color:var(--lime)}
+.comp{display:flex;flex-direction:column;gap:12px}
+.btn{border:0;border-radius:14px;padding:14px 18px;font:600 14px "Space Grotesk";cursor:pointer;text-align:center}
+.b1{background:var(--lime);color:#0b0d12}.b2{background:var(--violet);color:#fff}.b3{background:none;border:1px solid var(--line);color:var(--ink)}
+.inp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.inp small{display:block;color:var(--mut);font-size:11px}
+.chip{display:inline-flex;gap:6px;align-items:center;font-size:12px;padding:5px 10px;border-radius:20px;background:rgba(200,255,61,.12);color:var(--lime)}
+.chip.r{background:rgba(255,92,92,.12);color:#ff7a7a}
+.do{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.do .c{min-height:170px}
+.do h4{display:flex;gap:8px;align-items:center;font-size:15px}
+.copy{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--lime);color:#000;padding:10px 18px;border-radius:30px;font-size:13px;opacity:0;transition:.25s;pointer-events:none}
+.copy.on{opacity:1}
+footer{padding:40px 0 90px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+.demo{position:fixed;left:16px;bottom:16px;z-index:60;background:#fff;color:#000;font:500 12px/1 "Space Grotesk",sans-serif;padding:10px 14px;border-radius:30px;text-decoration:none;opacity:.9}
+@media(max-width:860px){nav{display:none}.cover,.sh,.type,.do{grid-template-columns:1fr}.cards,.ui{grid-template-columns:1fr}.sw{grid-template-columns:1fr 1fr}.sw div:first-child{grid-column:span 2}.aa{font-size:80px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="vk" viewBox="0 0 64 64"><path d="M8 12h14l10 26 10-26h14L38 54H26Z" fill="currentColor"/><circle cx="50" cy="14" r="5" fill="#c8ff3d"/></symbol>
+</defs></svg>
+<div class="w">
+<header><div class="lg"><svg class="mark" style="color:#eef1f7"><use href="#vk"/></svg>Vektra Pay</div>
+<nav><a href="#logo">Логотип</a><a href="#color">Цвет</a><a href="#type">Шрифт</a><a href="#ui">Интерфейс</a><a href="#rules">Правила</a></nav></header>
+
+<div class="cover">
+  <div><span class="mono">BRAND GUIDELINES · v1.0 · 2026</span>
+  <h1>Деньги<br>движутся<br><span>по вектору</span></h1>
+  <p>Айдентика платёжного сервиса для малого бизнеса: знак, цвет, типографика, UI-кит и правила использования.</p></div>
+  <div class="big-mark"><div class="grid"></div><svg style="color:#eef1f7;position:relative"><use href="#vk"/></svg></div>
+</div>
+
+<section id="logo">
+  <div class="sh"><div><span class="mono">01</span><h2>Логотип</h2></div><p>Знак — стрелка-«V», направленная вниз: деньги приходят к клиенту. Лаймовая точка — момент зачисления. Построен на сетке 8×8, читается от 16 px.</p></div>
+  <div class="constr"><svg viewBox="0 0 200 110"><g stroke="#2d3446" stroke-width=".5" fill="none"><path d="M0 10H200M0 40H200M0 70H200M0 100H200M20 0V110M50 0V110M80 0V110M110 0V110M140 0V110M170 0V110"/><circle cx="160" cy="18" r="16"/></g><path d="M25 12h22l18 52 18-52h22L72 100H58Z" fill="#eef1f7"/><circle cx="160" cy="18" r="9" fill="#c8ff3d"/><g font-family="JetBrains Mono" font-size="5" fill="#8a93a6"><text x="2" y="8">8u</text><text x="112" y="108">ширина 80u</text></g></svg></div>
+  <div class="cards" style="margin-top:16px">
+    <div class="c"><svg style="color:#eef1f7"><use href="#vk"/></svg><span class="mono">На тёмном</span></div>
+    <div class="c lt"><svg style="color:#0b0d12"><use href="#vk"/></svg><span class="mono">На светлом</span></div>
+    <div class="c lm"><svg style="color:#0b0d12"><use href="#vk"/></svg><span class="mono" style="color:#0b0d12">Акцентный</span></div>
+  </div>
+</section>
+
+<section id="color">
+  <div class="sh"><div><span class="mono">02</span><h2>Цвет</h2></div><p>Тёмная основа — спокойствие и надёжность, лайм — действие и успешная операция. Нажмите на цвет, чтобы скопировать HEX.</p></div>
+  <div class="sw" id="sw">
+    <div style="background:#0b0d12" data-h="#0B0D12"><b>Graphite</b><small>#0B0D12 · 60%</small></div>
+    <div style="background:#c8ff3d;color:#0b0d12" data-h="#C8FF3D"><b>Lime</b><small>#C8FF3D · 15%</small></div>
+    <div style="background:#6c5cff" data-h="#6C5CFF"><b>Violet</b><small>#6C5CFF · 10%</small></div>
+    <div style="background:#3dd6ff;color:#0b0d12" data-h="#3DD6FF"><b>Sky</b><small>#3DD6FF · 5%</small></div>
+    <div style="background:#eef1f7;color:#0b0d12" data-h="#EEF1F7"><b>Paper</b><small>#EEF1F7 · 10%</small></div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="sh"><div><span class="mono">03</span><h2>Типографика</h2></div><p>Space Grotesk — для заголовков и интерфейса, JetBrains Mono — для сумм, реквизитов и кодов. Оба шрифта бесплатные, поддерживают кириллицу.</p></div>
+  <div class="type">
+    <div class="c"><div class="aa">Аа</div><div><b>Space Grotesk</b><div class="mono">400 · 500 · 600 · 700</div></div></div>
+    <div class="c scale">
+      <div><span style="font-size:32px;font-weight:600">Display 32</span><span class="mono">/ 36</span></div>
+      <div><span style="font-size:22px;font-weight:600">Title 22</span><span class="mono">/ 28</span></div>
+      <div><span style="font-size:15px">Body 15</span><span class="mono">/ 24</span></div>
+      <div><span class="mono" style="font-size:14px;color:var(--ink)">12 480,00 ₽</span><span class="mono">Mono 14</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="ui">
+  <div class="sh"><div><span class="mono">04</span><h2>Интерфейс</h2></div><p>Бренд в продукте: главный экран приложения и базовые компоненты UI-кита.</p></div>
+  <div class="ui">
+    <div class="phone"><div class="scr">
+      <div style="display:flex;justify-content:space-between;align-items:center"><svg style="width:26px;height:26px;color:#eef1f7"><use href="#vk"/></svg><span class="mono">ИП Соколова</span></div>
+      <div class="bal"><small>Баланс счёта</small><b>248 930,50 ₽</b><small>+12 400 ₽ сегодня</small></div>
+      <div class="acts"><div><i>↓</i>Принять</div><div><i>↗</i>Перевод</div><div><i>▦</i>QR</div><div><i>≡</i>Выписка</div></div>
+      <div class="tx"><span>Оплата по QR</span><em>+3 200 ₽</em></div>
+      <div class="tx"><span>Эквайринг · 14 оп.</span><em>+9 200 ₽</em></div>
+      <div class="tx"><span>Аренда офиса</span><span>−45 000 ₽</span></div>
+      <div class="tx"><span>Налог УСН</span><span>−6 300 ₽</span></div>
+    </div></div>
+    <div class="c comp">
+      <span class="mono">Кнопки</span>
+      <button class="btn b1">Принять оплату</button><button class="btn b2">Перевести</button><button class="btn b3">Скачать выписку</button>
+    </div>
+    <div class="c comp">
+      <span class="mono">Поля и статусы</span>
+      <div class="inp"><small>Сумма</small>12 480,00 ₽</div>
+      <div class="inp"><small>Получатель</small>ООО «Север»</div>
+      <div><span class="chip">● Зачислено</span> <span class="chip r">● Отклонено</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="sh"><div><span class="mono">05</span><h2>Правила</h2></div><p>Короткий чек-лист для дизайнеров и подрядчиков.</p></div>
+  <div class="do">
+    <div class="c"><h4><span class="chip">✓ Так</span></h4><p style="color:var(--mut)">Оставлять охранное поле не меньше высоты точки. Использовать лайм только для действий и успешных статусов.</p></div>
+    <div class="c"><h4><span class="chip r">✕ Не так</span></h4><p style="color:var(--mut)">Растягивать, поворачивать знак, ставить лайм на белый фон, писать суммы не моноширинным шрифтом.</p></div>
+  </div>
+</section>
+</div>
+<footer><div class="w">Vektra Pay — вымышленный бренд. Демо-проект ProximityAgent: логотип, брендбук и UI-кит.</div></footer>
+<div class="copy" id="cp">Скопировано</div>
+<a class="demo" href="../../#cases">← Демо-проект ProximityAgent</a>
+<script>
+document.getElementById("sw").onclick=e=>{const d=e.target.closest("[data-h]");if(!d)return;navigator.clipboard?.writeText(d.dataset.h).catch(()=>{});cp.textContent="Скопировано "+d.dataset.h;cp.classList.add("on");setTimeout(()=>cp.classList.remove("on"),1400)};
+</script>
+</body>
+</html>
